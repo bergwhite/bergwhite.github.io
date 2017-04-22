@@ -151,6 +151,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-常用的14种HTTP状态码速查手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/常用的14种HTTP状态码速查手册/">常用的14种HTTP状态码速查手册</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/20/常用的14种HTTP状态码速查手册/" class="archive-article-date">
+  	<time datetime="2016-12-20T05:59:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>分类</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1xx \&gt; Information（信息）  // 接收的请求正在处理</div><div class="line">2xx \&gt; Success（成功）  // 请求正常处理完毕</div><div class="line">3xx \&gt; Redirection（重定向）  // 需要进行附加操作以完成请求</div><div class="line">4xx \&gt; Client Error（客户端错误）  // 服务器无法处理请求</div><div class="line">5xx \&gt; Server Error（服务器错误）  // 服务器处理请求出错</div></pre></td></tr></table></figure>
+<blockquote>
+<p>速查</p>
+</blockquote>
+<p>2xx（成功）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">200 OK  // 处理好了，内容给你，用GET我就给你内容，HEAD不给</div><div class="line">204 No Content  // 处理好了，内容就不返回了</div><div class="line">206 Partial Content  // 这是你要的内容块</div></pre></td></tr></table></figure>
+<p>3xx（重定向）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">301 Moved Permanently  // 链接永久改了</div><div class="line">302 Found   // 链接临时改了</div><div class="line">303 See Other  // 链接临时改了,请用GET请求资源</div><div class="line">304 Not Modified  // 找不到满足你条件的内容</div><div class="line">307 Temporary Redirect  // 链接临时改了</div></pre></td></tr></table></figure>
+<p>4xx（客户端）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">400 Bad Request  // 语法错</div><div class="line">401 Unauthorized  // 要登陆</div><div class="line">403 Forbidden  // 我拒绝</div><div class="line">404 Not Found  // 找不到</div></pre></td></tr></table></figure>
+<p>5xx（服务端）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">500 Internal Server Error  // 我在执行请求的时候出错了</div><div class="line">503 Service Unavailable  // 我在停机维护或CPU已爆表</div></pre></td></tr></table></figure>
+<blockquote>
+<p>结语</p>
+</blockquote>
+<p>说明</p>
+<ul>
+<li>HTTP状态码有时会不可靠。Web应用程序内部发生错误，依旧返回200。</li>
+</ul>
+<p>参考</p>
+<ul>
+<li>图解HTTP</li>
+</ul>
+<p>延伸</p>
+<ul>
+<li><a href="http://www.cnblogs.com/cswuyg/p/3871976.html" target="_blank" rel="external">HTTP状态码302、303和307的故事 - 烛秋@博客园</a></li>
+</ul>
+<p>标准</p>
+<ul>
+<li><a href="http://www.ietf.org/rfc/rfc2616.txt" target="_blank" rel="external">RFC2616</a></li>
+<li><a href="http://www.webdav.org/" target="_blank" rel="external">WebDAV</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4918.txt" target="_blank" rel="external">RFC4918</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc5842.txt" target="_blank" rel="external">RFC5842</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc6585.txt" target="_blank" rel="external">RFC6585</a> （附加HTTP状态码）</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/20/常用的14种HTTP状态码速查手册/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-传输层协议TCP和UDP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -364,15 +463,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
             
             <div class="clearfix"></div>
