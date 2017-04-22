@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bergwhite.github.io">
-  <title>Berg White&#39;s Blog</title>
+  <title>《JavaScript面向对象编程指南（第2版）》读书笔记（一） | Berg White&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="目录1234567891011121314151617181920212223242526一、对象  1.1 获取属性值的方式  1.2 获取动态生成的属性的值二、数组  2.1 检测是否为数组  2.2 增加数组长度导致未赋值的位置为undefined  2.3 用闭包实现简易迭代器三、作用域  3.1 函数作用域（局部变量）  3.2 不存在块级作用域  3.3 变量泄露  3.4 变量提升">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Berg White's Blog">
+<meta property="og:title" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）">
 <meta property="og:url" content="https://bergwhite.github.io/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/index.html">
 <meta property="og:site_name" content="Berg White's Blog">
 <meta property="og:description" content="目录1234567891011121314151617181920212223242526一、对象  1.1 获取属性值的方式  1.2 获取动态生成的属性的值二、数组  2.1 检测是否为数组  2.2 增加数组长度导致未赋值的位置为undefined  2.3 用闭包实现简易迭代器三、作用域  3.1 函数作用域（局部变量）  3.2 不存在块级作用域  3.3 变量泄露  3.4 变量提升">
-<meta property="og:updated_time" content="2017-04-22T14:11:55.930Z">
+<meta property="og:updated_time" content="2017-04-22T14:17:05.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Berg White's Blog">
+<meta name="twitter:title" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）">
 <meta name="twitter:description" content="目录1234567891011121314151617181920212223242526一、对象  1.1 获取属性值的方式  1.2 获取动态生成的属性的值二、数组  2.1 检测是否为数组  2.2 增加数组长度导致未赋值的位置为undefined  2.3 用闭包实现简易迭代器三、作用域  3.1 函数作用域（局部变量）  3.2 不存在块级作用域  3.3 变量泄露  3.4 变量提升">
   
     <link rel="alternative" href="/atom.xml" title="Berg White&#39;s Blog" type="application/atom+xml">
@@ -156,6 +156,21 @@
             <article id="post-《JavaScript面向对象编程指南（第2版）》读书笔记（一）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《JavaScript面向对象编程指南（第2版）》读书笔记（一）
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/" class="archive-article-date">
+  	<time datetime="2017-04-22T14:11:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">一、对象</div><div class="line">  1.1 获取属性值的方式</div><div class="line">  1.2 获取动态生成的属性的值</div><div class="line">二、数组</div><div class="line">  2.1 检测是否为数组</div><div class="line">  2.2 增加数组长度导致未赋值的位置为undefined</div><div class="line">  2.3 用闭包实现简易迭代器</div><div class="line">三、作用域</div><div class="line">  3.1 函数作用域（局部变量）</div><div class="line">  3.2 不存在块级作用域</div><div class="line">  3.3 变量泄露</div><div class="line">  3.4 变量提升</div><div class="line">  3.5 临时作用域</div><div class="line">四、闭包</div><div class="line">  4.1 操作闭包中的值</div><div class="line">五、事件监听</div><div class="line">六、类型检测</div><div class="line">七、类型转换</div><div class="line">八、URL编码</div><div class="line">  8.1 编码</div><div class="line">  8.2 解码</div><div class="line">九、JSON格式</div><div class="line">  9.1 转为JSON格式</div><div class="line">  9.2 转为对象</div><div class="line">十、兼容性问题</div></pre></td></tr></table></figure>
@@ -219,6 +234,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -299,7 +325,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="《JavaScript面向对象编程指南（第2版）》读书笔记（一）" data-title="" data-url="https://bergwhite.github.io/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/"></div>
+	<div class="ds-thread" data-thread-key="《JavaScript面向对象编程指南（第2版）》读书笔记（一）" data-title="《JavaScript面向对象编程指南（第2版）》读书笔记（一）" data-url="https://bergwhite.github.io/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -407,15 +433,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
             
             <div class="clearfix"></div>
