@@ -151,6 +151,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript-API-Console" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/04/JavaScript-API-Console/">JavaScript API Console</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/04/JavaScript-API-Console/" class="archive-article-date">
+  	<time datetime="2017-01-04T14:45:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Console" target="_blank" rel="external">1.Web API #Console @MDN</a></p>
+<p><a href="https://console.spec.whatwg.org/" target="_blank" rel="external">2.console #Console @whatwg</a></p>
+<p><a href="https://developers.google.com/chrome-developer-tools/docs/console-api" target="_blank" rel="external">3.console #Console @Google</a></p>
+<p><a href="http://javascript.ruanyifeng.com/stdlib/console.html" target="_blank" rel="external">4.console对象 #Console @阮一峰</a></p>
+<p><a href="http://www.opera.com/dragonfly/documentation/console/" target="_blank" rel="external">5.Console #Console @Opera</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">速查</div><div class="line"></div><div class="line">1 不同意义的输出语句</div><div class="line">	1.1 console.log()</div><div class="line">	1.2 console.info()</div><div class="line">	1.3 console.error()</div><div class="line">	1.4 console.warn()</div><div class="line">	1.5 console.debug()				// 不推荐使用</div><div class="line">2 用占位符标记特殊变量</div><div class="line">	2.1 %s（字符）</div><div class="line">	2.2 %f（浮点型）</div><div class="line">	2.3 %d / %i（整数）</div><div class="line">	2.4 %o（对象）</div><div class="line">	2.5 %c（样式）</div><div class="line">3 其他输出语句</div><div class="line">	3.1 console.clear()				// 清除控制台</div><div class="line">	3.2 console.trace()				// 堆栈跟踪</div><div class="line">	3.3 console.assert()			// maybe try later</div><div class="line">	3.4 console.count()				// maybe try later			口</div><div class="line">	3.5 console.table()				// 用表格来显示数据			口</div><div class="line">	3.6 console.group()				// 输出结构化信息</div><div class="line">		console.groupCollapsed()	// 输出结构化信息（默认折叠）</div><div class="line">		console.groupEnd()			// 本层结构结束（最多三层）</div><div class="line">	3.7 console.time()				// 标记定时器</div><div class="line">		console.timeEnd()			// 结束并且显示所用时间</div><div class="line">	3.8 console.dir()				// 非标准特性</div><div class="line">	3.9 console.dirxml()			// 非标准特性</div></pre></td></tr></table></figure>
+<blockquote>
+<p> 示例</p>
+</blockquote>
+<ol>
+<li>不同意义的输出语句</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;好奇心是学习一门知识的源动力&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>用占位符标记特殊变量</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;%cExample&apos;,&apos;color:red&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>其他输出语句</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">outer()</div><div class="line">function outer()&#123;</div><div class="line">	function inner()&#123;</div><div class="line">		console.trace()</div><div class="line">	&#125;</div><div class="line">	inner()</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.group()</div><div class="line">console.log(&apos;输出结构化信息&apos;)</div><div class="line">console.groupEnd()</div><div class="line"></div><div class="line">console.time()</div><div class="line">console.log(&apos;正在计时...&apos;)</div><div class="line">console.timeEnd(&apos;计时结束&apos;)</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/04/JavaScript-API-Console/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-常用的14种HTTP状态码速查手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
