@@ -6,27 +6,40 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bergwhite.github.io">
-  <title>《JavaScript面向对象编程指南（第2版）》读书笔记（一） | Berg White&#39;s Blog</title>
+  <title>《JavaScript面向对象编程指南（第2版）》读书笔记（二） | Berg White&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）
-《JavaScript面向对象编程指南（第2版）》读书笔记（二）
+  <meta name="description" content="项目背景
 
-目录1234567891011121314151617181920212223242526一、对象  1.1 获取属性值的方式  1.2 获取动态生成的属性的值二、数组  2.1 检测是否为数组  2.2 增加数组长度导致未赋值的位置为undefined  2.3">
+这个项目主要是为了玩玩NodeJS，项目的方向大概是做出类似QQ的在线聊天系统。想要在线体验可以点击在线演示。
+项目使用PM2进行部署和管理，功能在不断的迭代开发中。如果你觉得这个项目比较有趣，或者能对你有所帮助，欢迎给个Star。
+项目地址：https://github.com/bergwhite/nodejs-chat
+PS: 最近找工作，北京的欢迎联系。另外之前做过一个基于Vu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）">
-<meta property="og:url" content="https://bergwhite.github.io/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/index.html">
+<meta property="og:title" content="《JavaScript面向对象编程指南（第2版）》读书笔记（二）">
+<meta property="og:url" content="https://bergwhite.github.io/2017/05/31/用NodeJS打造多人在线聊天室（NodeJS & SocketIO & Express & EJS & MongoDB & Gulp）/index.html">
 <meta property="og:site_name" content="Berg White's Blog">
-<meta property="og:description" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）
-《JavaScript面向对象编程指南（第2版）》读书笔记（二）
+<meta property="og:description" content="项目背景
 
-目录1234567891011121314151617181920212223242526一、对象  1.1 获取属性值的方式  1.2 获取动态生成的属性的值二、数组  2.1 检测是否为数组  2.2 增加数组长度导致未赋值的位置为undefined  2.3">
-<meta property="og:updated_time" content="2017-05-04T14:47:47.044Z">
+这个项目主要是为了玩玩NodeJS，项目的方向大概是做出类似QQ的在线聊天系统。想要在线体验可以点击在线演示。
+项目使用PM2进行部署和管理，功能在不断的迭代开发中。如果你觉得这个项目比较有趣，或者能对你有所帮助，欢迎给个Star。
+项目地址：https://github.com/bergwhite/nodejs-chat
+PS: 最近找工作，北京的欢迎联系。另外之前做过一个基于Vu">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-nick-chat.gif">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-user-chat.gif">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-memb-room.gif">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-user-gone.gif">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-more-rooms.gif">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-room-diff.gif">
+<meta property="og:updated_time" content="2017-07-21T12:17:19.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）">
-<meta name="twitter:description" content="《JavaScript面向对象编程指南（第2版）》读书笔记（一）
-《JavaScript面向对象编程指南（第2版）》读书笔记（二）
+<meta name="twitter:title" content="《JavaScript面向对象编程指南（第2版）》读书笔记（二）">
+<meta name="twitter:description" content="项目背景
 
-目录1234567891011121314151617181920212223242526一、对象  1.1 获取属性值的方式  1.2 获取动态生成的属性的值二、数组  2.1 检测是否为数组  2.2 增加数组长度导致未赋值的位置为undefined  2.3">
+这个项目主要是为了玩玩NodeJS，项目的方向大概是做出类似QQ的在线聊天系统。想要在线体验可以点击在线演示。
+项目使用PM2进行部署和管理，功能在不断的迭代开发中。如果你觉得这个项目比较有趣，或者能对你有所帮助，欢迎给个Star。
+项目地址：https://github.com/bergwhite/nodejs-chat
+PS: 最近找工作，北京的欢迎联系。另外之前做过一个基于Vu">
+<meta name="twitter:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-nick-chat.gif">
   
     <link rel="alternative" href="/atom.xml" title="Berg White&#39;s Blog" type="application/atom+xml">
   
@@ -162,62 +175,112 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-《JavaScript面向对象编程指南（第2版）》读书笔记（一）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-用NodeJS打造多人在线聊天室（NodeJS &amp; SocketIO &amp; Express &amp; EJS &amp; MongoDB &amp; Gulp）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      《JavaScript面向对象编程指南（第2版）》读书笔记（一）
+      《JavaScript面向对象编程指南（第2版）》读书笔记（二）
     </h1>
   
 
         
-        <a href="/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/" class="archive-article-date">
-  	<time datetime="2017-04-22T14:11:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+        <a href="/2017/05/31/用NodeJS打造多人在线聊天室（NodeJS & SocketIO & Express & EJS & MongoDB & Gulp）/" class="archive-article-date">
+  	<time datetime="2017-05-31T05:10:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>《JavaScript面向对象编程指南（第2版）》读书笔记（一）</li>
-<li><a href="https://bergwhite.github.io/2017/05/04/%E3%80%8AJavaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">《JavaScript面向对象编程指南（第2版）》读书笔记（二）</a></li>
+        <blockquote>
+<p>项目背景</p>
+</blockquote>
+<p>这个项目主要是为了玩玩NodeJS，项目的方向大概是做出类似QQ的在线聊天系统。想要在线体验可以点击<a href="http://47.93.252.247:8088/" target="_blank" rel="external">在线演示</a>。</p>
+<p>项目使用PM2进行部署和管理，功能在不断的迭代开发中。如果你觉得这个项目比较有趣，或者能对你有所帮助，欢迎给个Star。</p>
+<p>项目地址：<a href="https://github.com/bergwhite/nodejs-chat" target="_blank" rel="external">https://github.com/bergwhite/nodejs-chat</a></p>
+<p>PS: 最近找工作，北京的欢迎联系。另外之前做过一个基于Vue全家桶二次开发的V2EX社区 <a href="https://github.com/bergwhite/v2ex-vue" target="_blank" rel="external">https://github.com/bergwhite/v2ex-vue</a>。</p>
+<blockquote>
+<p>项目目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">├─bin</div><div class="line">│    www  // 启动express</div><div class="line">├─database</div><div class="line">│    index.js  // MongoDB</div><div class="line">├─public  // 静态文件</div><div class="line">│    css</div><div class="line">│        index.css  // 首页CSS</div><div class="line">│    js</div><div class="line">│        index.js  // 与socket服务进行通讯（关键文件）</div><div class="line">|        socket-server.js  // socket服务（关键文件）</div><div class="line">│    img</div><div class="line">├─routers</div><div class="line">│    index.js  // 页面路由</div><div class="line">├─view</div><div class="line">│    error.ejs  // 错误页</div><div class="line">│    index.ejs  // 首页</div><div class="line">│    userCenter.ejs  // 用户中心（规划中）</div><div class="line">│    userList.ejs  // 用户列表（规划中）</div><div class="line">├─app.js  // express</div><div class="line">├─package.json  // npm包</div></pre></td></tr></table></figure>
+<blockquote>
+<p>路由</p>
+</blockquote>
+<p>目前只有/目录和/room/:id正式使用了，其他路由的页面还在迭代开发中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/  // 首页</div><div class="line">/user  // 用户列表</div><div class="line">/user/:id  // 用户中心</div><div class="line">/user/:id/register  // 注册（JSON）</div><div class="line">/user/:id/login  // 登陆（JSON）</div><div class="line">/user/:id/logout  // 注销（JSON）</div><div class="line">/user/:id/info  // 用户资料（JSON）</div><div class="line">/room/:id  // 指定聊天室</div></pre></td></tr></table></figure>
+<blockquote>
+<p>开始安装</p>
+</blockquote>
+<p>使用之前，请在package.json中修改MongoDB的安装路径（–dbpath）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git clone https://github.com/bergwhite/nodejs-chat  // 克隆项目到本地</div><div class="line">cd nodejs-chat  // 进入项目目录</div><div class="line">npm install  // 安装依赖</div><div class="line">npm run build  // 构建线上代码</div><div class="line">npm run mongod // 启动MongoDB服务</div><div class="line">npm run start // 启动聊天室服务并启动网站</div></pre></td></tr></table></figure>
+<blockquote>
+<p>项目演示</p>
+</blockquote>
+<p>目前项目存在一个已知的bug，表情包无法在div模拟的输入框中插入（修复中）。</p>
+<p>匿名聊天</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-nick-chat.gif" alt="nodejs-chat-nick-chat"></p>
+<p>用户聊天</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-user-chat.gif" alt="nodejs-chat-user-chat"></p>
+<p>成员&amp;房间</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-memb-room.gif" alt="nodejs-chat-memb-room"></p>
+<p>离线通知</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-user-gone.gif" alt="nodejs-chat-user-gone"></p>
+<p>更多房间</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-more-rooms.gif" alt="nodejs-chat-more-rooms"></p>
+<p>房间独立</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/nodejs-chat-room-diff.gif" alt="nodejs-chat-room-diff"></p>
+<blockquote>
+<p>已上线功能</p>
+</blockquote>
+<ul>
+<li>跨浏览器，跨地域聊天（SocketIO自带技能）</li>
+<li>首次进入会显示欢迎信息</li>
+<li>发送空消息会进行提示</li>
+<li>直接发送消息默认昵称为“神秘人”</li>
+<li>发送消息后会清空当前输入框内容，然后焦点回到消息输入框</li>
+<li>添加用户名后会成为新用户，然后告知全房间人有新用户加入</li>
+<li>可以创建不同的房间，不同的房间的聊天是相互独立的</li>
+<li>显示当前房间的在线用户（设置了用户名的）</li>
+<li>显示目前所有打开的房间</li>
+<li>用户（设置了用户名的）离线会通知所有房间内的成员</li>
+<li>压缩线上代码，加快访问速度</li>
+<li>…</li>
 </ul>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">一、对象</div><div class="line">  1.1 获取属性值的方式</div><div class="line">  1.2 获取动态生成的属性的值</div><div class="line">二、数组</div><div class="line">  2.1 检测是否为数组</div><div class="line">  2.2 增加数组长度导致未赋值的位置为undefined</div><div class="line">  2.3 用闭包实现简易迭代器</div><div class="line">三、作用域</div><div class="line">  3.1 函数作用域（局部变量）</div><div class="line">  3.2 不存在块级作用域</div><div class="line">  3.3 变量泄露</div><div class="line">  3.4 变量提升</div><div class="line">  3.5 临时作用域</div><div class="line">四、闭包</div><div class="line">  4.1 操作闭包中的值</div><div class="line">五、事件监听</div><div class="line">六、类型检测</div><div class="line">七、类型转换</div><div class="line">八、URL编码</div><div class="line">  8.1 编码</div><div class="line">  8.2 解码</div><div class="line">九、JSON格式</div><div class="line">  9.1 转为JSON格式</div><div class="line">  9.2 转为对象</div><div class="line">十、兼容性问题</div></pre></td></tr></table></figure>
-<h2 id="一、对象"><a href="#一、对象" class="headerlink" title="一、对象"></a>一、对象</h2><h3 id="1-1-获取属性值的方式"><a href="#1-1-获取属性值的方式" class="headerlink" title="1.1 获取属性值的方式"></a>1.1 获取属性值的方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">water = &#123;</div><div class="line">  down: false</div><div class="line">&#125;</div><div class="line">console.log(water.down) // false</div><div class="line">console.log(water[&apos;down&apos;]) // false</div></pre></td></tr></table></figure>
-<h3 id="1-2-获取动态生成的属性的值"><a href="#1-2-获取动态生成的属性的值" class="headerlink" title="1.2 获取动态生成的属性的值"></a>1.2 获取动态生成的属性的值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var type = &apos;down&apos;</div><div class="line">console.log(water[type]) // false</div></pre></td></tr></table></figure>
-<h2 id="二、数组"><a href="#二、数组" class="headerlink" title="二、数组"></a>二、数组</h2><h3 id="2-1-检测是否为数组"><a href="#2-1-检测是否为数组" class="headerlink" title="2.1 检测是否为数组"></a>2.1 检测是否为数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">typeof([1,2])  // object</div><div class="line">Array.isArray([1,2])  // true</div><div class="line">Object.prototype.toString.call([1,2])  // [object Array]</div><div class="line">Array.isArray(Array.prototype)  // true</div><div class="line">Object.prototype.toString.call(Array.prototype)  // [object Array]</div></pre></td></tr></table></figure>
-<h3 id="2-2-增加数组长度导致未赋值的位置为undefined"><a href="#2-2-增加数组长度导致未赋值的位置为undefined" class="headerlink" title="2.2 增加数组长度导致未赋值的位置为undefined"></a>2.2 增加数组长度导致未赋值的位置为undefined</h3><p>减少数组长度则会裁去多余的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var x = [1,2];</div><div class="line">x.length = 7;</div><div class="line">console.log(x);  // [1, 2, undefined × 5]</div><div class="line">x.length = 1;</div><div class="line">console.log(x);  // [1]</div></pre></td></tr></table></figure>
-<h3 id="2-3-用闭包实现简易迭代器"><a href="#2-3-用闭包实现简易迭代器" class="headerlink" title="2.3 用闭包实现简易迭代器"></a>2.3 用闭包实现简易迭代器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var next = setup([3,3,9]);</div><div class="line">function setup(x)&#123;</div><div class="line">  var i = 0;</div><div class="line">  return function()&#123;</div><div class="line">    console.log(x[i++]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">next();  // 3</div><div class="line">next();  // 3</div><div class="line">next();  // 9</div><div class="line">next();  // undefined</div></pre></td></tr></table></figure>
-<h2 id="三、作用域"><a href="#三、作用域" class="headerlink" title="三、作用域"></a>三、作用域</h2><h3 id="3-1-函数作用域（局部变量）"><a href="#3-1-函数作用域（局部变量）" class="headerlink" title="3.1 函数作用域（局部变量）"></a>3.1 函数作用域（局部变量）</h3><p>不能在函数体外直接访问函数内变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function water() &#123;</div><div class="line"> var direction = &apos;down&apos;</div><div class="line">&#125;</div><div class="line">console.log(direction)  // Uncaught ReferenceError: direction is not defined</div></pre></td></tr></table></figure>
-<h3 id="3-2-不存在块级作用域"><a href="#3-2-不存在块级作用域" class="headerlink" title="3.2 不存在块级作用域"></a>3.2 不存在块级作用域</h3><p>for、if等代码块中的变量不是局部变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">if(water)&#123;</div><div class="line">  var down = true</div><div class="line">&#125;</div><div class="line">console.log(down)  // true</div></pre></td></tr></table></figure>
-<h3 id="3-3-变量泄露"><a href="#3-3-变量泄露" class="headerlink" title="3.3 变量泄露"></a>3.3 变量泄露</h3><p>函数体内的变量未声明，会在函数第一次执行的时候泄露成全局变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function water() &#123;</div><div class="line">  direction = &apos;down&apos;</div><div class="line">&#125;</div><div class="line">water()  // 执行函数</div><div class="line">console.log(direction)  // down</div></pre></td></tr></table></figure>
-<h3 id="3-4-变量提升"><a href="#3-4-变量提升" class="headerlink" title="3.4 变量提升"></a>3.4 变量提升</h3><p>已声明的变量名会提升至顶部，值不会提升。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var down = true</div><div class="line">function water() &#123;</div><div class="line">  // 变量提升覆盖了外部down，由于值没有提升，所以为undefined</div><div class="line">  console.log(down)  // undefined</div><div class="line">  var down = false  // false</div><div class="line">  console.log(down)</div><div class="line">&#125;</div><div class="line">water()</div></pre></td></tr></table></figure>
-<h3 id="3-5-临时作用域"><a href="#3-5-临时作用域" class="headerlink" title="3.5 临时作用域"></a>3.5 临时作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">call和apply借用另一个对象的方法，提高代码复用</div><div class="line">第一个参数为this的指向，第二个参数为传入的参数，apply传入数组</div><div class="line">构造函数不使用new this的值会指向window</div></pre></td></tr></table></figure>
-<h2 id="四、闭包"><a href="#四、闭包" class="headerlink" title="四、闭包"></a>四、闭包</h2><h3 id="4-1-操作闭包中的值"><a href="#4-1-操作闭包中的值" class="headerlink" title="4.1 操作闭包中的值"></a>4.1 操作闭包中的值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var nature = (function() &#123;</div><div class="line">  var water = &#123;&#125;</div><div class="line">  water.down = false</div><div class="line">  water.get = function(type) &#123;</div><div class="line">    return water[type]</div><div class="line">  &#125;</div><div class="line">  water.set = function(type,val) &#123;</div><div class="line">	water[type] = val</div><div class="line">    return typeof(val) === &apos;boolean&apos; ? true : false</div><div class="line">  &#125;</div><div class="line">  return &#123;</div><div class="line">    getWater: water.get,</div><div class="line">    setWater: water.set</div><div class="line">  &#125;</div><div class="line">&#125;)()</div><div class="line">console.log(nature.getWater(&apos;down&apos;))  // false</div><div class="line">console.log(nature.setWater(&apos;down&apos;,true))  // true</div></pre></td></tr></table></figure>
-<h2 id="五、事件监听"><a href="#五、事件监听" class="headerlink" title="五、事件监听"></a>五、事件监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var event = &#123;</div><div class="line">  add: function ( dom,type,func ) &#123;</div><div class="line">    if(window.addEventListener)&#123;</div><div class="line">      dom.addEventListener( type,func,false )</div><div class="line">    &#125;</div><div class="line">    // 兼容IE9以下</div><div class="line">    else if(document.attachEvent) &#123;</div><div class="line">      dom.attachEvent(&apos;on&apos; + type,func)</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">      dom[&apos;on&apos; + type] = func</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  del: function ( dom,type,func ) &#123;</div><div class="line">    if(window.addEventListener)&#123;</div><div class="line">      dom.removeEventListener( type,func,false )</div><div class="line">    &#125;</div><div class="line">    else if(document.attachEvent) &#123;</div><div class="line">      dom.detachEvent(&apos;on&apos; + type,func)</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">      dom[&apos;on&apos; + type] = null</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var f = function()&#123;</div><div class="line">  console.log(&apos;event received&apos;)</div><div class="line">&#125;</div><div class="line">event.add(document.body,&apos;click&apos;,f)</div><div class="line">event.del(document.body,&apos;click&apos;,f)</div></pre></td></tr></table></figure>
-<h2 id="六、类型检测"><a href="#六、类型检测" class="headerlink" title="六、类型检测"></a>六、类型检测</h2><h3 id="6-1-常用类型"><a href="#6-1-常用类型" class="headerlink" title="6.1 常用类型"></a>6.1 常用类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">typeof(1)  // &quot;number&quot;</div><div class="line"></div><div class="line">number/boolean/string/undefined/object/function</div></pre></td></tr></table></figure>
-<h3 id="6-2-继承检测"><a href="#6-2-继承检测" class="headerlink" title="6.2 继承检测"></a>6.2 继承检测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function Water (name,status) &#123;</div><div class="line">  this.name = name</div><div class="line">  this.status = status</div><div class="line">&#125;</div><div class="line">var seaWater = new Water(&apos;sea&apos;,&apos;warm&apos;)</div><div class="line">seaWater instanceof Water  // true</div></pre></td></tr></table></figure>
-<h3 id="6-3-NaN和isFinite检测"><a href="#6-3-NaN和isFinite检测" class="headerlink" title="6.3 NaN和isFinite检测"></a>6.3 NaN和isFinite检测</h3><p>NaN不等于NaN，检测需要使用isNaN函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NaN === NaN  // false</div><div class="line">isNaN(NaN)  // true</div></pre></td></tr></table></figure>
-<h2 id="七、类型转换"><a href="#七、类型转换" class="headerlink" title="七、类型转换"></a>七、类型转换</h2><h3 id="7-1-转为整形"><a href="#7-1-转为整形" class="headerlink" title="7.1 转为整形"></a>7.1 转为整形</h3><p>parseInt和parseFloat碰到第一个异常字符就会终止。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">console.log(parseInt(66.5t))  // 66.5</div><div class="line">console.log(parseInt(t66.5t))  // NaN</div></pre></td></tr></table></figure>
-<h3 id="7-2-null和undefined"><a href="#7-2-null和undefined" class="headerlink" title="7.2 null和undefined"></a>7.2 null和undefined</h3><p>数值超出范围则显示Infinity。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">console.log(1*undefined)  // NaN</div><div class="line">console.log(1*null)  // 0</div></pre></td></tr></table></figure>
-<h2 id="八、URL编码"><a href="#八、URL编码" class="headerlink" title="八、URL编码"></a>八、URL编码</h2><h3 id="8-1-编码"><a href="#8-1-编码" class="headerlink" title="8.1 编码"></a>8.1 编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var src = &quot;http://www.cnblogs.com/bergwhite/p/6657943.html&quot;</div><div class="line">var srcURI = encodeURI(src)  // &quot;http://www.cnblogs.com/bergwhite/p/6657943.html&quot;</div><div class="line">var srcURICom = encodeURIComponent(src)  // &quot;http%3A%2F%2Fwww.cnblogs.com%2Fbergwhite%2Fp%2F6657943.html&quot;</div></pre></td></tr></table></figure>
-<h3 id="8-2-解码"><a href="#8-2-解码" class="headerlink" title="8.2 解码"></a>8.2 解码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">decodeURI(srcURI)  // &quot;http://www.cnblogs.com/bergwhite/p/6657943.html&quot;</div><div class="line">decodeURIComponent(srcURI)  // &quot;http://www.cnblogs.com/bergwhite/p/6657943.html&quot;</div></pre></td></tr></table></figure>
-<h2 id="九、JSON格式"><a href="#九、JSON格式" class="headerlink" title="九、JSON格式"></a>九、JSON格式</h2><h3 id="9-1-转为JSON格式"><a href="#9-1-转为JSON格式" class="headerlink" title="9.1 转为JSON格式"></a>9.1 转为JSON格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var water = &#123;</div><div class="line">  down: false</div><div class="line">&#125;</div><div class="line">var waterJSON = JSON.stringify(water)  // &quot;&#123;&quot;down&quot;:false&#125;&quot;</div></pre></td></tr></table></figure>
-<h3 id="9-2-转为对象"><a href="#9-2-转为对象" class="headerlink" title="9.2 转为对象"></a>9.2 转为对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JSON.parse(waterJSON)  // Object &#123;down: false&#125;</div></pre></td></tr></table></figure>
-<h2 id="十、兼容性问题"><a href="#十、兼容性问题" class="headerlink" title="十、兼容性问题"></a>十、兼容性问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">parseInt(09) // ES5中默认不转换八进制，ES3会默认作为八进制</div><div class="line">parseInt(09,10)  // 当值为日期的时候，作为十进制处理</div></pre></td></tr></table></figure>
-<p>感谢大家的阅读。</p>
+<blockquote>
+<p>待上线功能</p>
+</blockquote>
+<p>用户名</p>
+<ul>
+<li>统计匿名用户</li>
+<li>支持一键随机获取用户名</li>
+</ul>
+<p>头像</p>
+<ul>
+<li>访客使用默认头像</li>
+<li>新用户（设置了用户名的）随机获得一个头像</li>
+<li>新用户换头像可以从默认的一组头像中选择</li>
+<li>是否支持上传头像还在考虑中（安全性问题）</li>
+</ul>
+<p>聊天</p>
+<ul>
+<li>支持多组丰富的表情包</li>
+<li>是否支持上传图片还在考虑中（安全性问题）</li>
+</ul>
+<p>数据库</p>
+<ul>
+<li>对接MongoDB，新用户（设置了用户名的）设置密码后，将从临时用户转变为正式用户</li>
+</ul>
+<blockquote>
+<p>项目缺陷</p>
+</blockquote>
+<ul>
+<li>界面丑（等功能完善了再考虑）</li>
+<li>表情包无法在div模拟的输入框中插入（修复中）</li>
+<li>…</li>
+</ul>
 
       
 
@@ -308,7 +371,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://bergwhite.github.io/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://bergwhite.github.io/2017/05/31/用NodeJS打造多人在线聊天室（NodeJS & SocketIO & Express & EJS & MongoDB & Gulp）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,7 +385,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/04/《JavaScript面向对象编程指南（第2版）》读书笔记（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/21/如何通过路由器查看宽带的密码（多图预警）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -332,8 +395,8 @@
     </a>
   
   
-    <a href="/2017/04/02/前端总结·基础篇·JS（四）异步请求及跨域方案/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端总结·基础篇·JS（四）异步请求及跨域方案</div>
+    <a href="/2017/05/16/用 Vue 全家桶二次开发 V2EX 社区/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用 Vue 全家桶二次开发 V2EX 社区</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -347,7 +410,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="《JavaScript面向对象编程指南（第2版）》读书笔记（一）" data-title="《JavaScript面向对象编程指南（第2版）》读书笔记（一）" data-url="https://bergwhite.github.io/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/"></div>
+	<div class="ds-thread" data-thread-key="用NodeJS打造多人在线聊天室（NodeJS &amp; SocketIO &amp; Express &amp; EJS &amp; MongoDB &amp; Gulp）" data-title="《JavaScript面向对象编程指南（第2版）》读书笔记（二）" data-url="https://bergwhite.github.io/2017/05/31/用NodeJS打造多人在线聊天室（NodeJS &amp; SocketIO &amp; Express &amp; EJS &amp; MongoDB &amp; Gulp）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
