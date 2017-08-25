@@ -6,57 +6,42 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bergwhite.github.io">
-  <title>React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui） | Berg White&#39;s Blog</title>
+  <title>Zepto源码分析（一）核心代码分析 | Berg White&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录
-项目简介
-在线演示
-截图演示
-踩坑
+  <meta name="description" content="本文只分析核心的部分代码，并且在这部分代码有删减，但是不影响代码的正常运行。
 
-项目简介（1/4）
-Github: https://github.com/bergwhite/v2ex-react
-项目使用React、Reac-router、Axios、ANTD UI进行开发
-项目兼容移动端
-使用Nginx代理V2EX API并支持CORS跨域
-另外还写过一个Vue版V2EX项目，v2ex-vue：https://x.bw2.me/#">
+目录
+
+12345678* 用闭包封装Zepto* 开始处理细节* 正式处理数据（获取选择器选择的DOM）* 正式处理数据（添加DOM到当前实例）* 在实例的原型链上添加方法* 支持插件扩展* 验收
+
+用闭包封装Zepto
+
+1234567891011121314151617// 对全局暴露Zepto变量var Zep">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React版V2EX社区（react & react-router & axios & antd ui）">
-<meta property="og:url" content="https://bergwhite.github.io/2017/08/22/React版V2EX社区（react & react-router & axios & antd ui）/index.html">
+<meta property="og:title" content="Zepto源码分析（一）核心代码分析">
+<meta property="og:url" content="https://bergwhite.github.io/2017/08/26/Zepto源码分析（一）核心代码分析/index.html">
 <meta property="og:site_name" content="Berg White's Blog">
-<meta property="og:description" content="目录
-项目简介
-在线演示
-截图演示
-踩坑
+<meta property="og:description" content="本文只分析核心的部分代码，并且在这部分代码有删减，但是不影响代码的正常运行。
 
-项目简介（1/4）
-Github: https://github.com/bergwhite/v2ex-react
-项目使用React、Reac-router、Axios、ANTD UI进行开发
-项目兼容移动端
-使用Nginx代理V2EX API并支持CORS跨域
-另外还写过一个Vue版V2EX项目，v2ex-vue：https://x.bw2.me/#">
-<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_moile-qrcode.png">
-<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_allPage.gif">
-<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_articlePage.gif">
-<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_nodePage.gif">
-<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_userAndNodePage.gif">
-<meta property="og:updated_time" content="2017-08-22T04:46:17.293Z">
+目录
+
+12345678* 用闭包封装Zepto* 开始处理细节* 正式处理数据（获取选择器选择的DOM）* 正式处理数据（添加DOM到当前实例）* 在实例的原型链上添加方法* 支持插件扩展* 验收
+
+用闭包封装Zepto
+
+1234567891011121314151617// 对全局暴露Zepto变量var Zep">
+<meta property="og:updated_time" content="2017-08-25T16:55:12.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React版V2EX社区（react & react-router & axios & antd ui）">
-<meta name="twitter:description" content="目录
-项目简介
-在线演示
-截图演示
-踩坑
+<meta name="twitter:title" content="Zepto源码分析（一）核心代码分析">
+<meta name="twitter:description" content="本文只分析核心的部分代码，并且在这部分代码有删减，但是不影响代码的正常运行。
 
-项目简介（1/4）
-Github: https://github.com/bergwhite/v2ex-react
-项目使用React、Reac-router、Axios、ANTD UI进行开发
-项目兼容移动端
-使用Nginx代理V2EX API并支持CORS跨域
-另外还写过一个Vue版V2EX项目，v2ex-vue：https://x.bw2.me/#">
-<meta name="twitter:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_moile-qrcode.png">
+目录
+
+12345678* 用闭包封装Zepto* 开始处理细节* 正式处理数据（获取选择器选择的DOM）* 正式处理数据（添加DOM到当前实例）* 在实例的原型链上添加方法* 支持插件扩展* 验收
+
+用闭包封装Zepto
+
+1234567891011121314151617// 对全局暴露Zepto变量var Zep">
   
     <link rel="alternative" href="/atom.xml" title="Berg White&#39;s Blog" type="application/atom+xml">
   
@@ -202,57 +187,63 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Zepto源码分析（一）核心代码分析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui）
+      Zepto源码分析（一）核心代码分析
     </h1>
   
 
         
-        <a href="/2017/08/22/React版V2EX社区（react & react-router & axios & antd ui）/" class="archive-article-date">
-  	<time datetime="2017-08-22T04:31:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
+        <a href="/2017/08/26/Zepto源码分析（一）核心代码分析/" class="archive-article-date">
+  	<time datetime="2017-08-25T16:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>项目简介</li>
-<li>在线演示</li>
-<li>截图演示</li>
-<li>踩坑</li>
-</ul>
-<h2 id="项目简介（1-4）"><a href="#项目简介（1-4）" class="headerlink" title="项目简介（1/4）"></a>项目简介（1/4）</h2><ul>
-<li>Github: <a href="https://github.com/bergwhite/v2ex-react" target="_blank" rel="external">https://github.com/bergwhite/v2ex-react</a></li>
-<li>项目使用React、Reac-router、Axios、ANTD UI进行开发</li>
-<li>项目兼容移动端</li>
-<li>使用Nginx代理V2EX API并支持CORS跨域</li>
-<li>另外还写过一个Vue版V2EX项目，v2ex-vue：<a href="https://x.bw2.me/#/" target="_blank" rel="external">https://x.bw2.me/#/</a></li>
-<li>以及nodejs聊天室，nchat：<a href="http://y.bw2.me:8086" target="_blank" rel="external">http://y.bw2.me:8086</a></li>
-<li>找工作，北京。联系方式：YmVyZ3doaXRlc0BnbWFpbC5jb20=</li>
-<li>觉得对你有帮助的话，欢迎给个star，谢谢</li>
-</ul>
-<h2 id="在线演示（2-4）"><a href="#在线演示（2-4）" class="headerlink" title="在线演示（2/4）"></a>在线演示（2/4）</h2><ul>
-<li><a href="https://v2ex-react.bw2.me/" target="_blank" rel="external">点击进入</a></li>
-<li><a href="http://atmp.oss-cn-qingdao.aliyuncs.com/apk/v2ex-react-1.0.apk" target="_blank" rel="external">另外还用cordova打包成了安卓APK</a></li>
-</ul>
-<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_moile-qrcode.png" alt="mobile"></p>
-<h2 id="截图演示（3-4）"><a href="#截图演示（3-4）" class="headerlink" title="截图演示（3/4）"></a>截图演示（3/4）</h2><h3 id="导航页面"><a href="#导航页面" class="headerlink" title="导航页面"></a>导航页面</h3><p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_allPage.gif" alt="nav-page"></p>
-<h3 id="文章页面"><a href="#文章页面" class="headerlink" title="文章页面"></a>文章页面</h3><p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_articlePage.gif" alt="art-page"></p>
-<h3 id="分类页面"><a href="#分类页面" class="headerlink" title="分类页面"></a>分类页面</h3><p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_nodePage.gif" alt="tag-page"></p>
-<h3 id="用户和主题页面"><a href="#用户和主题页面" class="headerlink" title="用户和主题页面"></a>用户和主题页面</h3><p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/v2ex-react_userAndNodePage.gif" alt="use-page"></p>
-<h2 id="踩坑（4-4）"><a href="#踩坑（4-4）" class="headerlink" title="踩坑（4/4）"></a>踩坑（4/4）</h2><h3 id="支持IE"><a href="#支持IE" class="headerlink" title="支持IE"></a>支持IE</h3><p>在IE中的报错，TypeError: 对象不支持“startsWith”属性或方法，通过添加babel-polyfill解决</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import babel-polyfill for IE9+</div></pre></td></tr></table></figure>
-<h3 id="通过Nginx配置路由"><a href="#通过Nginx配置路由" class="headerlink" title="通过Nginx配置路由"></a>通过Nginx配置路由</h3><p>直接访问二级路由会404，通过nginx把页面定向到inedx.html，让react-router接管页面路由</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">location / &#123;</div><div class="line">  try_files $uri /index.html</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="开启Gzip"><a href="#开启Gzip" class="headerlink" title="开启Gzip"></a>开启Gzip</h3><p>页面访问速度过慢，于是开启Gzip对数据压缩传输</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">gzip on; # 开启Gzip</div><div class="line">gzip_comp_level 6; # 级别为1-9，9是最高的压缩比</div><div class="line">gzip_types *; # 压缩所有类型文件</div><div class="line">gzip_vary on; # 添加响应头</div></pre></td></tr></table></figure>
+        <p>本文只分析核心的部分代码，并且在这部分代码有删减，但是不影响代码的正常运行。</p>
+<blockquote>
+<p>目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 用闭包封装Zepto</div><div class="line">* 开始处理细节</div><div class="line">* 正式处理数据（获取选择器选择的DOM）</div><div class="line">* 正式处理数据（添加DOM到当前实例）</div><div class="line">* 在实例的原型链上添加方法</div><div class="line">* 支持插件扩展</div><div class="line">* 验收</div></pre></td></tr></table></figure>
+<blockquote>
+<p>用闭包封装Zepto</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 对全局暴露Zepto变量</div><div class="line">var Zepto = (function() &#123;</div><div class="line"></div><div class="line">  // 定义$变量，并将具体细节交给zepto.init处理</div><div class="line">  $ = function(selector, context)&#123;</div><div class="line">    return zepto.init(selector, context)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 返回变量</div><div class="line">  return $</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">// 把Zepto变量挂载在window</div><div class="line">window.Zepto = Zepto</div><div class="line">// 当$变量没有被占用的时候，为Zepto设置别名为$</div><div class="line">window.$ === undefined &amp;&amp; (window.$ = Zepto)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>开始处理细节</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 对全局暴露Zepto变量</div><div class="line">var Zepto = (function() &#123;</div><div class="line"></div><div class="line">  // [新增] 初始化zepto变量为对象</div><div class="line">  var zepto = &#123;&#125;</div><div class="line"></div><div class="line">  // [新增] 添加初始化方法。当selector参数为空时，则交给zepto.Z()处理</div><div class="line">  //        当selector为字符串时则把zepto.qsa(document, selector)的值存到dom变量</div><div class="line">  //        并且交给zepto.Z(dom, selector)处理</div><div class="line">  zepto.init = function(selector, context) &#123;</div><div class="line">    var dom</div><div class="line">    if (!selector) return zepto.Z()</div><div class="line">    else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">      dom = zepto.qsa(document, selector)</div><div class="line">    &#125;</div><div class="line">    return zepto.Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义$变量，并将具体细节交给zepto.init处理</div><div class="line">  $ = function(selector, context)&#123;</div><div class="line">    return zepto.init(selector, context)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 返回变量</div><div class="line">  return $</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">// 把Zepto变量挂载在window</div><div class="line">window.Zepto = Zepto</div><div class="line">// 当$变量没有被占用的时候，为Zepto设置别名为$</div><div class="line">window.$ === undefined &amp;&amp; (window.$ = Zepto)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>正式处理数据（获取选择器选择的DOM）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 对全局暴露Zepto变量</div><div class="line">var Zepto = (function() &#123;</div><div class="line"></div><div class="line">  // 初始化zepto变量为对象</div><div class="line">  var zepto = &#123;&#125;</div><div class="line"></div><div class="line">  //  添加初始化方法。当selector参数为空时，则交给zepto.Z()处理</div><div class="line">  //  当selector为字符串时则把zepto.qsa(document, selector)的值存到dom变量</div><div class="line">  //  并且交给zepto.Z(dom, selector)处理</div><div class="line">  zepto.init = function(selector, context) &#123;</div><div class="line">    var dom</div><div class="line">    if (!selector) return zepto.Z()</div><div class="line">    else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">      dom = zepto.qsa(document, selector)</div><div class="line">    &#125;</div><div class="line">    return zepto.Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义$变量，并将具体细节交给zepto.init处理</div><div class="line">  $ = function(selector, context)&#123;</div><div class="line">    return zepto.init(selector, context)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 使用querySelectorAll(selector)查询DOM</div><div class="line">  zepto.qsa = function(element, selector)&#123;</div><div class="line">    return selector ? element.querySelectorAll(selector) : []</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 返回变量</div><div class="line">  return $</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">// 把Zepto变量挂载在window</div><div class="line">window.Zepto = Zepto</div><div class="line">// 当$变量没有被占用的时候，为Zepto设置别名为$</div><div class="line">window.$ === undefined &amp;&amp; (window.$ = Zepto)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>正式处理数据（添加DOM到当前实例）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 对全局暴露Zepto变量</div><div class="line">var Zepto = (function() &#123;</div><div class="line"></div><div class="line">  // 初始化zepto变量为对象</div><div class="line">  var zepto = &#123;&#125;</div><div class="line"></div><div class="line">  // [新增] 开始正式处理数据。当dom长度为0则不添加内容，</div><div class="line">  //        否则逐个将dom逐个到当前实例</div><div class="line">  function Z(dom, selector) &#123;</div><div class="line">    var i, len = dom ? dom.length : 0</div><div class="line">    for (i = 0; i &lt; len; i++) this[i] = dom[i]</div><div class="line">    this.length = len</div><div class="line">    this.selector = selector || &apos;&apos;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 直接返回一个新的构造函数</div><div class="line">  zepto.Z = function(dom, selector) &#123;</div><div class="line">    return new Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  //  添加初始化方法。当selector参数为空时，则交给zepto.Z()处理</div><div class="line">  //  当selector为字符串时则把zepto.qsa(document, selector)的值存到dom变量</div><div class="line">  //  并且交给zepto.Z(dom, selector)处理</div><div class="line">  zepto.init = function(selector, context) &#123;</div><div class="line">    var dom</div><div class="line">    if (!selector) return zepto.Z()</div><div class="line">    else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">      dom = zepto.qsa(document, selector)</div><div class="line">    &#125;</div><div class="line">    return zepto.Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义$变量，并将具体细节交给zepto.init处理</div><div class="line">  $ = function(selector, context)&#123;</div><div class="line">    return zepto.init(selector, context)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 使用querySelectorAll(selector)查询DOM</div><div class="line">  zepto.qsa = function(element, selector)&#123;</div><div class="line">    return selector ? element.querySelectorAll(selector) : []</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 返回变量</div><div class="line">  return $</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">// 把Zepto变量挂载在window</div><div class="line">window.Zepto = Zepto</div><div class="line">// 当$变量没有被占用的时候，为Zepto设置别名为$</div><div class="line">window.$ === undefined &amp;&amp; (window.$ = Zepto)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在实例的原型链上添加方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 对全局暴露Zepto变量</div><div class="line">var Zepto = (function() &#123;</div><div class="line"></div><div class="line">  // 初始化zepto变量为对象</div><div class="line">  var zepto = &#123;&#125;, emptyArray = []</div><div class="line"></div><div class="line">  // 开始正式处理数据。当dom长度为0则不添加内容，</div><div class="line">  // 否则逐个将dom逐个到当前实例</div><div class="line">  function Z(dom, selector) &#123;</div><div class="line">    var i, len = dom ? dom.length : 0</div><div class="line">    for (i = 0; i &lt; len; i++) this[i] = dom[i]</div><div class="line">    this.length = len</div><div class="line">    this.selector = selector || &apos;&apos;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 直接返回一个新的构造函数</div><div class="line">  zepto.Z = function(dom, selector) &#123;</div><div class="line">    return new Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  //  添加初始化方法。当selector参数为空时，则交给zepto.Z()处理</div><div class="line">  //  当selector为字符串时则把zepto.qsa(document, selector)的值存到dom变量</div><div class="line">  //  并且交给zepto.Z(dom, selector)处理</div><div class="line">  zepto.init = function(selector, context) &#123;</div><div class="line">    var dom</div><div class="line">    if (!selector) return zepto.Z()</div><div class="line">    else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">      dom = zepto.qsa(document, selector)</div><div class="line">    &#125;</div><div class="line">    return zepto.Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义$变量，并将具体细节交给zepto.init处理</div><div class="line">  $ = function(selector, context)&#123;</div><div class="line">    return zepto.init(selector, context)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 使用querySelectorAll(selector)查询DOM</div><div class="line">  zepto.qsa = function(element, selector)&#123;</div><div class="line">    return selector ? element.querySelectorAll(selector) : []</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 定义each方法</div><div class="line">  $.each = function(elements, callback)&#123;</div><div class="line">    var i, key</div><div class="line">    if (likeArray(elements)) &#123;</div><div class="line">      for (i = 0; i &lt; elements.length; i++)</div><div class="line">        if (callback.call(elements[i], i, elements[i]) === false) return elements</div><div class="line">    &#125; else &#123;</div><div class="line">      for (key in elements)</div><div class="line">        if (callback.call(elements[key], key, elements[key]) === false) return elements</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return elements</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 定义用于扩展在原型链上的方法</div><div class="line">  $.fn = &#123;</div><div class="line">    constructor: zepto.Z,</div><div class="line">    length: 0,</div><div class="line">    each: function(callback)&#123;</div><div class="line">      emptyArray.every.call(this, function(el, idx)&#123;</div><div class="line">        return callback.call(el, idx, el) !== false</div><div class="line">      &#125;)</div><div class="line">      return this</div><div class="line">    &#125;,</div><div class="line">    empty: function()&#123;</div><div class="line">      return this.each(function()&#123; this.innerHTML = &apos;&apos; &#125;)</div><div class="line">    &#125;,</div><div class="line">    html: function(html)&#123;</div><div class="line">      return 0 in arguments ?</div><div class="line">        this.each(function(idx)&#123;</div><div class="line">          var originHtml = this.innerHTML</div><div class="line">          $(this).empty().append( funcArg(this, html, idx, originHtml) )</div><div class="line">        &#125;) :</div><div class="line">        (0 in this ? this[0].innerHTML : null)</div><div class="line">    &#125;,</div><div class="line">    test : function()&#123;</div><div class="line">      return this.each(function()&#123;</div><div class="line">        console.log(&apos;测试链式调用&apos;)</div><div class="line">        return this </div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 原型链指向$.fn</div><div class="line">  zepto.Z.prototype = Z.prototype = $.fn</div><div class="line">  // $.zepto指向zepto</div><div class="line">  $.zepto = zepto</div><div class="line"></div><div class="line">  // 返回变量</div><div class="line">  return $</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">// 把Zepto变量挂载在window</div><div class="line">window.Zepto = Zepto</div><div class="line">// 当$变量没有被占用的时候，为Zepto设置别名为$</div><div class="line">window.$ === undefined &amp;&amp; (window.$ = Zepto)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>支持插件扩展</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// 对全局暴露Zepto变量</div><div class="line">var Zepto = (function() &#123;</div><div class="line"></div><div class="line">  // 初始化zepto变量为对象</div><div class="line">  var zepto = &#123;&#125;, emptyArray = []</div><div class="line"></div><div class="line">  // 开始正式处理数据。当dom长度为0则不添加内容，</div><div class="line">  // 否则逐个将dom逐个到当前实例</div><div class="line">  function Z(dom, selector) &#123;</div><div class="line">    var i, len = dom ? dom.length : 0</div><div class="line">    for (i = 0; i &lt; len; i++) this[i] = dom[i]</div><div class="line">    this.length = len</div><div class="line">    this.selector = selector || &apos;&apos;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 直接返回一个新的构造函数</div><div class="line">  zepto.Z = function(dom, selector) &#123;</div><div class="line">    return new Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  //  添加初始化方法。当selector参数为空时，则交给zepto.Z()处理</div><div class="line">  //  当selector为字符串时则把zepto.qsa(document, selector)的值存到dom变量</div><div class="line">  //  并且交给zepto.Z(dom, selector)处理</div><div class="line">  zepto.init = function(selector, context) &#123;</div><div class="line">    var dom</div><div class="line">    if (!selector) return zepto.Z()</div><div class="line">    else if (typeof selector == &apos;string&apos;) &#123;</div><div class="line">      dom = zepto.qsa(document, selector)</div><div class="line">    &#125;</div><div class="line">    return zepto.Z(dom, selector)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义$变量，并将具体细节交给zepto.init处理</div><div class="line">  $ = function(selector, context)&#123;</div><div class="line">    return zepto.init(selector, context)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 插件扩展函数</div><div class="line">  function extend(target, source, deep) &#123;</div><div class="line">    for (key in source)</div><div class="line">      if (source[key] !== undefined) target[key] = source[key]</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // [新增] 插件扩展函数</div><div class="line">  $.extend = function(target)&#123;</div><div class="line">    var deep, args = emptyArray.slice.call(arguments, 1)</div><div class="line">    if (typeof target == &apos;boolean&apos;) &#123;</div><div class="line">      deep = target</div><div class="line">      target = args.shift()</div><div class="line">    &#125;</div><div class="line">    args.forEach(function(arg)&#123; extend(target, arg, deep) &#125;)</div><div class="line">    return target</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 使用querySelectorAll(selector)查询DOM</div><div class="line">  zepto.qsa = function(element, selector)&#123;</div><div class="line">    return selector ? element.querySelectorAll(selector) : []</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义each方法</div><div class="line">  $.each = function(elements, callback)&#123;</div><div class="line">    var i, key</div><div class="line">    if (likeArray(elements)) &#123;</div><div class="line">      for (i = 0; i &lt; elements.length; i++)</div><div class="line">        if (callback.call(elements[i], i, elements[i]) === false) return elements</div><div class="line">    &#125; else &#123;</div><div class="line">      for (key in elements)</div><div class="line">        if (callback.call(elements[key], key, elements[key]) === false) return elements</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return elements</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 定义用于扩展在原型链上的方法</div><div class="line">  $.fn = &#123;</div><div class="line">    constructor: zepto.Z,</div><div class="line">    length: 0,</div><div class="line">    each: function(callback)&#123;</div><div class="line">      emptyArray.every.call(this, function(el, idx)&#123;</div><div class="line">        return callback.call(el, idx, el) !== false</div><div class="line">      &#125;)</div><div class="line">      return this</div><div class="line">    &#125;,</div><div class="line">    empty: function()&#123;</div><div class="line">      return this.each(function()&#123; this.innerHTML = &apos;&apos; &#125;)</div><div class="line">    &#125;,</div><div class="line">    html: function(html)&#123;</div><div class="line">      return 0 in arguments ?</div><div class="line">        this.each(function(idx)&#123;</div><div class="line">          var originHtml = this.innerHTML</div><div class="line">          $(this).empty().append( funcArg(this, html, idx, originHtml) )</div><div class="line">        &#125;) :</div><div class="line">        (0 in this ? this[0].innerHTML : null)</div><div class="line">    &#125;,</div><div class="line">    test : function()&#123;</div><div class="line">      return this.each(function()&#123;</div><div class="line">        console.log(&apos;测试链式调用&apos;)</div><div class="line">        return this </div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 原型链指向$.fn</div><div class="line">  zepto.Z.prototype = Z.prototype = $.fn</div><div class="line">  // $.zepto指向zepto</div><div class="line">  $.zepto = zepto</div><div class="line"></div><div class="line">  // 返回变量</div><div class="line">  return $</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">// 把Zepto变量挂载在window</div><div class="line">window.Zepto = Zepto</div><div class="line">// 当$变量没有被占用的时候，为Zepto设置别名为$</div><div class="line">window.$ === undefined &amp;&amp; (window.$ = Zepto)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>验收</p>
+</blockquote>
+<p>```</p>
+<p>// 链式调用测试<br>$(‘head’).test().test()  // 测试链式调用\n测试链式调用\n{0: head, length: 1, selector: “head”}<br>$(‘head’).html()  // <meta charset="utf-8">&lt;link rel=”dns-prefetch” href…</p>
+<p>// 编写插件测试<br>;(function($){<br>  $.extend($.fn, {<br>    bw2: function() {<br>      return this.html()<br>    }<br>  })<br>})(Zepto)<br>$(‘head’).bw2()  // <meta charset="utf-8">&lt;link rel=”dns-prefetch” href…</p>
+<p>``</p>
+
       
 
       
@@ -286,7 +277,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -342,7 +333,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://bergwhite.github.io/2017/08/22/React版V2EX社区（react & react-router & axios & antd ui）/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://bergwhite.github.io/2017/08/26/Zepto源码分析（一）核心代码分析/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -356,18 +347,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/08/26/Zepto源码分析（一）核心代码分析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Zepto源码分析（一）核心代码分析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/05/NodeJS项目迁移兼Ubuntu下NodeJS环境部署/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">NodeJS项目迁移兼Ubuntu下NodeJS环境部署</div>
+    <a href="/2017/08/22/React版V2EX社区（react & react-router & axios & antd ui）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -381,7 +363,7 @@ var _hmt = _hmt || [];
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui）" data-title="React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui）" data-url="https://bergwhite.github.io/2017/08/22/React版V2EX社区（react &amp; react-router &amp; axios &amp; antd ui）/"></div>
+	<div class="ds-thread" data-thread-key="Zepto源码分析（一）核心代码分析" data-title="Zepto源码分析（一）核心代码分析" data-url="https://bergwhite.github.io/2017/08/26/Zepto源码分析（一）核心代码分析/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
