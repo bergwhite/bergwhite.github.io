@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bergwhite.github.io">
-  <title>Tag: HTTP | Berg White&#39;s Blog</title>
+  <title>Berg White&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Berg White's Blog">
-<meta property="og:url" content="https://bergwhite.github.io/tags/HTTP/index.html">
+<meta property="og:url" content="https://bergwhite.github.io/page/3/index.html">
 <meta property="og:site_name" content="Berg White's Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Berg White's Blog">
@@ -161,72 +161,93 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-传输层协议TCP和UDP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/20/常用的14种HTTP状态码速查手册/" class="archive-article-date">
-  	<time datetime="2016-12-20T05:59:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/20/常用的14种HTTP状态码速查手册/">常用的14种HTTP状态码速查手册</a>
+      <a class="article-title" href="/2016/12/08/传输层协议TCP和UDP/">传输层协议TCP和UDP</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/08/传输层协议TCP和UDP/" class="archive-article-date">
+        
+        <a href="/2016/12/08/传输层协议TCP和UDP/" class="archive-article-date">
   	<time datetime="2016-12-08T04:27:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/08/传输层协议TCP和UDP/">传输层协议TCP和UDP</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><blockquote>
+<p>三次握手</p>
+</blockquote>
+<p>三次握手是发生在建立连接的时候，大致过程是这样的。首先由客户端发起请求，然后服务端对请求进行响应，最后客户端再告知收到响应。具体的过程列在了下面。</p>
+<ol>
+<li><p>> <code>客户端</code>发送带<code>SYN</code>标志的数据包给对方，告知需要建立连接；</p>
+</li>
+<li><p>> <code>服务端</code>收到后，回传一个带有<code>SYN/ACK</code>标志的数据包，告知收到建立连接请求；</p>
+</li>
+<li><p>> <code>客户端</code>回传一个带有<code>ACK</code>标志的数据包，代表握手结束并且建立TCP连接。</p>
+</li>
+</ol>
+<blockquote>
+<p>四次挥手</p>
+</blockquote>
+<p>四次挥手则是在断开连接的时候，过程如下。</p>
+<ol>
+<li><p>> <code>客户端</code>发送带<code>FIN</code>标志的数据包给对方，告知需要断开连接；</p>
+</li>
+<li><p>> <code>服务端</code>收到后，回传一个带有<code>ACK</code>标志的数据包，告知收到断开连接请求；</p>
+</li>
+<li><p>> <code>服务端</code>再次回传一个带有<code>FIN</code>标志的数据包，告知同意断开连接请求；</p>
+</li>
+<li><p>> <code>客户端</code>回传一个带有<code>ACK</code>标志的数据包，代表挥手结束并且断开TCP连接。</p>
+</li>
+</ol>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>UDP没有类似TCP的三次握手机制，而是直接把数据发送出去。因此传输不具备可靠性。但是在网络极差的时候，凭借其不需要三次握手和四次挥手特性，却能高效的把数据传输出去。</p>
+<h4 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h4><p>现在把上面出现的词汇分类整理一下吧。</p>
+<ul>
+<li><p>传输协议</p>
+<ul>
+<li>TCP - Transmission Control Protocol - 传输控制协议</li>
+<li>UDP - User Datagram Protocol - 用户数据协议</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>握手状态</p>
+<ul>
+<li>SYN - synchronous - 建立连接</li>
+<li>ACK - acknowledgement - 确认收到</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>挥手状态<ul>
+<li>FIN - final - 关闭连接</li>
+</ul>
+</li>
+</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>这篇文章是我的读书笔记。综合了书中的知识以及参考了百度百科关于四次挥手的解释，总结出了对传输层协议TCP和UDP的浅显认知。其中，词汇的命名参考了园友azraelly的TCP的状态一文。</p>
+<p>关于TCP和UDP的应用场景，以及在传输时都带有那些状态和数据，文中都没有提及。改日有时间再专门写一篇这样的文章。</p>
+<ul>
+<li><p>[0] 图解HTTP</p>
+</li>
+<li><p>[1] <a href="http://baike.baidu.com/link?url=HbEw1gj0lBfj9-D5RdSYHPLJpUOiybgxgnqFRtw1PJbfputfe49zcGElxlb-PrGO7276UWuOgmf8gPvvwTWErV5DBKzIzNrXfjlrwBN3JluLWTdrZsv2aaxXCch9uUn-" target="_blank" rel="external">四次挥手</a></p>
+</li>
+<li>[2] <a href="http://www.cnblogs.com/azraelly/archive/2012/12/25/2832393.html" target="_blank" rel="external">TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)</a></li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -238,19 +259,33 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/08/传输层协议TCP和UDP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 
 
           </div>
@@ -272,10 +307,10 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

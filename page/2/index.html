@@ -161,6 +161,141 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端总结·基础篇·JS（四）异步请求及跨域方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/02/前端总结·基础篇·JS（四）异步请求及跨域方案/">前端总结·基础篇·JS（四）异步请求及跨域方案</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/02/前端总结·基础篇·JS（四）异步请求及跨域方案/" class="archive-article-date">
+  	<time datetime="2017-04-01T16:08:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前端总结系列"><a href="#前端总结系列" class="headerlink" title="前端总结系列"></a>前端总结系列</h2><ul>
+<li><a href="https://bergwhite.github.io/2017/02/19/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7CSS%EF%BC%88%E4%B8%80%EF%BC%89%E5%B8%83%E5%B1%80/">前端总结·基础篇·CSS（一）布局</a></li>
+<li><a href="https://bergwhite.github.io/2017/02/24/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7CSS%EF%BC%88%E4%BA%8C%EF%BC%89%E8%A7%86%E8%A7%89/">前端总结·基础篇·CSS（二）视觉</a></li>
+<li><a href="https://bergwhite.github.io/2017/03/01/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7CSS%EF%BC%88%E4%B8%89%EF%BC%89%E8%A1%A5%E5%85%85/">前端总结·基础篇·CSS（三）补充</a></li>
+<li><a href="https://bergwhite.github.io/2017/03/06/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E4%B8%80%EF%BC%89%E5%8E%9F%E5%9E%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E9%93%BE%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88String%EF%BC%89/">前端总结·基础篇·JS（一）原型、原型链、构造函数和字符串（String）</a></li>
+<li><a href="https://bergwhite.github.io/2017/03/14/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E4%BA%8C%EF%BC%89%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E5%8E%BB%E9%87%8D%E4%BB%A5%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8D%E5%BA%8F%E5%92%8C%E6%95%B0%E7%BB%84%EF%BC%88Array%EF%BC%89/">前端总结·基础篇·JS（二）数组深拷贝、去重以及字符串反序和数组（Array）</a></li>
+<li><a href="https://bergwhite.github.io/2017/03/17/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E4%B8%89%EF%BC%89arguments%E3%80%81callee%E3%80%81call%E3%80%81apply%E3%80%81bind%E5%8F%8A%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">前端总结·基础篇·JS（三）arguments、callee、call、apply、bind及函数封装和构造函数</a></li>
+<li>前端总结·基础篇·JS（四）异步请求及跨域方案</li>
+<li><a href="https://bergwhite.github.io/2017/03/25/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%B7%A5%E5%85%B7%E7%AF%87%C2%B7%E7%AE%A1%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97%E5%8C%96%E6%96%B9%E6%A1%88/">前端总结·工具篇·管理（一）常用模块化方案</a></li>
+</ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">一、异步请求</div><div class="line">	1.1 XHR（XMLHttpRequest）</div><div class="line">	1.2 Promise（ES6）</div><div class="line">	1.3 Fetch</div><div class="line"></div><div class="line">二、跨域方案</div><div class="line">	2.1 JSONP（JavaScript Object Notation with Padding）</div><div class="line">	2.2 CORS（Cross-origin resource sharing）</div></pre></td></tr></table></figure>
+<h2 id="一、异步请求"><a href="#一、异步请求" class="headerlink" title="一、异步请求"></a>一、异步请求</h2><p>此文只进行简单的介绍，完整的用例请见我的<a href="https://bergwhite.github.io/quick-start/PureJS/async/">Github</a>。Github上的用例，对这三种方法的POST和GET请求都进行了封装。</p>
+<p>Github演示不支持POST请求，所以会有部分报错。完整测试可以放在本机的localhost下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">a.json</div><div class="line">-------------</div><div class="line">&#123;</div><div class="line">&quot;user&quot;:&quot;张三&quot;,</div><div class="line">&quot;folling&quot;:30,</div><div class="line">&quot;foller&quot;: 20</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1-1-XHR（XMLHttpRequest）"><a href="#1-1-XHR（XMLHttpRequest）" class="headerlink" title="1.1 XHR（XMLHttpRequest）"></a>1.1 XHR（XMLHttpRequest）</h3><p><strong>三行代码实现异步请求</strong></p>
+<p>下面是发送XHR请求之后，返回的成功信息。</p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235601758-1963706827.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  var xmlhttp = new XMLHttpRequest()  // 创建异步请求</div><div class="line">  xmlhttp.open(&apos;GET&apos;,&apos;a.json&apos;)  // 使用GET方法获取hello.txt文件</div><div class="line">  xmlhttp.send()  // 发送异步请求</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><strong>读取异步请求返回的数据</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235645727-347835619.png" alt=""></p>
+<p>返回的数据存储在xmlhttp.responseText。</p>
+<p>怎么返回了这么多内容？请接着往下看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  var xmlhttp = new XMLHttpRequest()</div><div class="line">  // 异步请求状态发生改变时会执行这个函数</div><div class="line">  xmlhttp.onreadystatechange = function () &#123;</div><div class="line">    // 显示返回的内容</div><div class="line">    console.log(xmlhttp.responseText)</div><div class="line">  &#125;</div><div class="line">  xmlhttp.open(&apos;GET&apos;,&apos;hello.txt&apos;)</div><div class="line">  xmlhttp.send()</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><strong>异步请求的状态</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235658883-516391564.png" alt=""></p>
+<p>现在就好了，我们在使用xmlhttp.responseText之前判断了一下当前ajax的状态。确认完成了，我们才返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  var xmlhttp = new XMLHttpRequest()</div><div class="line">  xmlhttp.onreadystatechange = function () &#123;</div><div class="line">    // status == 200 用来判断当前HTTP请求完成</div><div class="line">    if ( xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200 ) &#123;</div><div class="line">      console.log(xmlhttp.responseText)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  xmlhttp.open(&apos;GET&apos;,&apos;hello.txt&apos;)</div><div class="line">  xmlhttp.send()</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>异步请求一共有五个状态，用来标识异步请求的不同阶段。</p>
+<ul>
+<li>0 UNSENT 代理被创建，但尚未调用 open() 方法</li>
+<li>1 OPENED open() 方法已经被调用</li>
+<li>2 HEADERS_RECEIVED     send() 方法已经被调用，并且头部和状态已经可获得</li>
+<li>3 LOADING 下载中； responseText 属性已经包含部分数据</li>
+<li>4 DONE 下载操作已完成</li>
+</ul>
+<p>上面返回的五条数据中，一条是XHR请求成功默认返回的。前两条对应的状态1和2，是没有返回内容的，所以为空。后面两条有内容的对应的是3和4。</p>
+<p>因此，我们想要数据完全下载完成了再显示返回内容，只需要用if判断一下当前状态是否是4即可。</p>
+<p>关于HTTP状态码代表的意义，可以看我之前写过的<a href="https://bergwhite.github.io/2016/12/20/%E5%B8%B8%E7%94%A8%E7%9A%8414%E7%A7%8DHTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/">文章</a>。</p>
+<p><strong>封装XHR方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function ajax (method,url,callback) &#123;</div><div class="line">  var xmlhttp = new XMLHttpRequest()  // 创建异步请求</div><div class="line">  // 异步请求状态发生改变时会执行这个函数</div><div class="line">  xmlhttp.onreadystatechange = function () &#123;</div><div class="line">    // status == 200 用来判断当前HTTP请求完成</div><div class="line">    if ( xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200 ) &#123;</div><div class="line">      callback(JSON.parse(xmlhttp.responseText))  // 执行回调</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  xmlhttp.open(method,url)  // 使用GET方法获取</div><div class="line">  xmlhttp.send()  // 发送异步请求</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>调用XHR方法</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235710961-697705613.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ajax(&apos;GET&apos;,&apos;a.json&apos;,function (res) &#123;</div><div class="line">  console.log(res)  // 显示返回的对象</div><div class="line">  ajax(&apos;GET&apos;,&apos;b.json&apos;,function (res) &#123;</div><div class="line">    console.log(res)</div><div class="line">    ajax(&apos;GET&apos;,&apos;c.json&apos;,function (res) &#123;</div><div class="line">      console.log(res)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="1-2-Promise（ES6）"><a href="#1-2-Promise（ES6）" class="headerlink" title="1.2 Promise（ES6）"></a>1.2 Promise（ES6）</h3><p>我们在用Ajax写异步的时候，很容易掉入回调地狱（callback），代码的可读性会大大的下降。Promise可以让代码变得更优雅。</p>
+<p><strong>封装基于Promise的XHR</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">function ajax ( method,url ) &#123;</div><div class="line">  // 返回一个Promise对象</div><div class="line">  return new Promise(function (resolve) &#123;</div><div class="line">    var xmlhttp = new XMLHttpRequest()  // 创建异步请求</div><div class="line">    // 异步请求状态发生改变时会执行这个函数</div><div class="line">    xmlhttp.onreadystatechange = function () &#123;</div><div class="line">      // status == 200 用来判断当前HTTP请求完成</div><div class="line">      if ( xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200 ) &#123;</div><div class="line">        resolve(JSON.parse(xmlhttp.responseText))  // 标记已完成</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    xmlhttp.open(method,url)  // 使用GET方法获取</div><div class="line">    xmlhttp.send()  // 发送异步请求 </div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>调用基于Promise的XHR</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235730711-310028327.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var aj = ajax(&apos;GET&apos;,&apos;a.json&apos;)</div><div class="line">aj.then(function (res) &#123;</div><div class="line">  console.log(res)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="1-3-fetch"><a href="#1-3-fetch" class="headerlink" title="1.3 fetch"></a>1.3 fetch</h3><p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235803930-425055830.png" alt=""></p>
+<p>fetch是对Promise的一个封装，使用非常方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">fetch(&apos;a.json&apos;).then(function (res)&#123;</div><div class="line">   return res  // 返回Promise</div><div class="line">&#125;).then(function (res) &#123;</div><div class="line">   return res.json()  // 返回JSON对象</div><div class="line">&#125;).then(function (json) &#123;</div><div class="line">   console.log(json)  // 显示JSON内容</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="二、跨域方案"><a href="#二、跨域方案" class="headerlink" title="二、跨域方案"></a>二、跨域方案</h2><p>CORS方法更好一些，但是需要对服务器有自主权。JSONP则不需要对服务器有自主权，可以通过script、img等标签可以发送GET请求的特点，通过回调函数执行已有的JS函数。在函数内获取返回值。</p>
+<p>CORS支持所有HTTP请求，JSONP只支持GET请求。</p>
+<h3 id="2-1-JSONP（JavaScript-Object-Notation-with-Padding）"><a href="#2-1-JSONP（JavaScript-Object-Notation-with-Padding）" class="headerlink" title="2.1 JSONP（JavaScript Object Notation with Padding）"></a>2.1 JSONP（JavaScript Object Notation with Padding）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">用回调跨域</div><div class="line">------------------------</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://localhost/async/cors.php?callback=go&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">设置好回调函数</div><div class="line">------------------------</div><div class="line">function go (arr) &#123;</div><div class="line">  console.log(arr)  // 显示回调的值 | &#123;a:&quot;1&quot;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">script发送的GET请求时，返回的值是一个函数，遂执行回调函数</div><div class="line">------------------------</div><div class="line">&lt;?php </div><div class="line">$go=$_GET[&apos;callback&apos;];  // 获取callback的值</div><div class="line">echo $go.&apos;(&#123;a:&quot;1&quot;&#125;)&apos;;  // 输出回调函数</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-2-CORS（Cross-origin-resource-sharing）"><a href="#2-2-CORS（Cross-origin-resource-sharing）" class="headerlink" title="2.2 CORS（Cross-origin resource sharing）"></a>2.2 CORS（Cross-origin resource sharing）</h3><p><strong>PHP配置CORS</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?php </div><div class="line">header(&quot;Access-Control-Allow-Origin:*&quot;);  // *号为允许所有域名，推荐修改成需要跨域的域名</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p><strong>配置CORS前</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235840852-1596459570.png" alt=""></p>
+<p><strong>配置CORS后</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/1036201/201704/1036201-20170401235817133-196599815.png" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下一篇总结Vue。</p>
+<p>参考</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/AJAX/Getting_Started" target="_blank" rel="external">AJAX - MDN</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external">XMLHttpRequest - MDN</a></li>
+<li><a href="http://www.cnblogs.com/gaojun/archive/2012/08/11/2633891.html" target="_blank" rel="external">XHR——XMLHttpRequest对象 - gaojun</a></li>
+<li><a href="http://www.w3school.com.cn/xml/xml_http.asp" target="_blank" rel="external">XMLHttpRequest 对象 - W3Scool</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="external">跨域资源共享 CORS 详解 - 阮一峰</a></li>
+<li><a href="http://www.cnblogs.com/silin6/p/4288967.html" target="_blank" rel="external">JavaScript异步编程（1）- ECMAScript 6的Promise对象 - </a></li>
+<li><a href="http://www.cnblogs.com/wonyun/p/fetch_polyfill_timeout_jsonp_cookie_progress.html" target="_blank" rel="external">fetch使用的常见问题及解决办法 - wonyun</a></li>
+<li><a href="http://www.cnblogs.com/xupeiyu/p/5067076.html" target="_blank" rel="external">你不需要jQuery(三)：新AJAX方法fetch() - 唸随爱</a></li>
+<li><a href="http://www.csdn.net/article/1970-01-01/2826065" target="_blank" rel="external">深入浅出Fetch API 带你入解应用场景及适用问题 - Ludovico Fischer</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/02/前端总结·基础篇·JS（四）异步请求及跨域方案/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-前端总结·工具篇·管理（一）常用模块化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1283,129 +1418,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-传输层协议TCP和UDP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/08/传输层协议TCP和UDP/">传输层协议TCP和UDP</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/08/传输层协议TCP和UDP/" class="archive-article-date">
-  	<time datetime="2016-12-08T04:27:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><blockquote>
-<p>三次握手</p>
-</blockquote>
-<p>三次握手是发生在建立连接的时候，大致过程是这样的。首先由客户端发起请求，然后服务端对请求进行响应，最后客户端再告知收到响应。具体的过程列在了下面。</p>
-<ol>
-<li><p>> <code>客户端</code>发送带<code>SYN</code>标志的数据包给对方，告知需要建立连接；</p>
-</li>
-<li><p>> <code>服务端</code>收到后，回传一个带有<code>SYN/ACK</code>标志的数据包，告知收到建立连接请求；</p>
-</li>
-<li><p>> <code>客户端</code>回传一个带有<code>ACK</code>标志的数据包，代表握手结束并且建立TCP连接。</p>
-</li>
-</ol>
-<blockquote>
-<p>四次挥手</p>
-</blockquote>
-<p>四次挥手则是在断开连接的时候，过程如下。</p>
-<ol>
-<li><p>> <code>客户端</code>发送带<code>FIN</code>标志的数据包给对方，告知需要断开连接；</p>
-</li>
-<li><p>> <code>服务端</code>收到后，回传一个带有<code>ACK</code>标志的数据包，告知收到断开连接请求；</p>
-</li>
-<li><p>> <code>服务端</code>再次回传一个带有<code>FIN</code>标志的数据包，告知同意断开连接请求；</p>
-</li>
-<li><p>> <code>客户端</code>回传一个带有<code>ACK</code>标志的数据包，代表挥手结束并且断开TCP连接。</p>
-</li>
-</ol>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>UDP没有类似TCP的三次握手机制，而是直接把数据发送出去。因此传输不具备可靠性。但是在网络极差的时候，凭借其不需要三次握手和四次挥手特性，却能高效的把数据传输出去。</p>
-<h4 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h4><p>现在把上面出现的词汇分类整理一下吧。</p>
-<ul>
-<li><p>传输协议</p>
-<ul>
-<li>TCP - Transmission Control Protocol - 传输控制协议</li>
-<li>UDP - User Datagram Protocol - 用户数据协议</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>握手状态</p>
-<ul>
-<li>SYN - synchronous - 建立连接</li>
-<li>ACK - acknowledgement - 确认收到</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>挥手状态<ul>
-<li>FIN - final - 关闭连接</li>
-</ul>
-</li>
-</ul>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>这篇文章是我的读书笔记。综合了书中的知识以及参考了百度百科关于四次挥手的解释，总结出了对传输层协议TCP和UDP的浅显认知。其中，词汇的命名参考了园友azraelly的TCP的状态一文。</p>
-<p>关于TCP和UDP的应用场景，以及在传输时都带有那些状态和数据，文中都没有提及。改日有时间再专门写一篇这样的文章。</p>
-<ul>
-<li><p>[0] 图解HTTP</p>
-</li>
-<li><p>[1] <a href="http://baike.baidu.com/link?url=HbEw1gj0lBfj9-D5RdSYHPLJpUOiybgxgnqFRtw1PJbfputfe49zcGElxlb-PrGO7276UWuOgmf8gPvvwTWErV5DBKzIzNrXfjlrwBN3JluLWTdrZsv2aaxXCch9uUn-" target="_blank" rel="external">四次挥手</a></p>
-</li>
-<li>[2] <a href="http://www.cnblogs.com/azraelly/archive/2012/12/25/2832393.html" target="_blank" rel="external">TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/08/传输层协议TCP和UDP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1496,11 +1511,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
