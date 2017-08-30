@@ -6,45 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bergwhite.github.io">
-  <title>传输层协议TCP和UDP | Berg White&#39;s Blog</title>
+  <title>对存在JavaScript隐式类型转换的四种情况的总结 | Berg White&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="TCP
-三次握手
+  <meta name="description" content="一般存在四种情况，JavaScript会对变量的数据类型进行转换。
 
-三次握手是发生在建立连接的时候，大致过程是这样的。首先由客户端发起请求，然后服务端对请求进行响应，最后客户端再告知收到响应。具体的过程列在了下面。
-
-&amp;gt; 客户端发送带SYN标志的数据包给对方，告知需要建立连接；
-
-&amp;gt; 服务端收到后，回传一个带有SYN/ACK标志的数据包，告知收到建立连接请求；
-
-&amp;gt; 客户端回传一个带有ACK标志的数据包，代表握手结束并且建立TCP连接。">
+目录123456789101112131415* if中的条件会被自动转为Boolean类型	* 会被转为false的数据	* 会被转为true的数据* 参与+运算都会被隐式的转为字符串	* 会被转为空字符串的数据	* 会被转为字符串的数据	* 会被转为数据类型标记的数据* 参与*运算都会被隐式的转为数字	* 会被转为0的数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="传输层协议TCP和UDP">
-<meta property="og:url" content="https://bergwhite.github.io/2016/12/08/传输层协议TCP和UDP/index.html">
+<meta property="og:title" content="对存在JavaScript隐式类型转换的四种情况的总结">
+<meta property="og:url" content="https://bergwhite.github.io/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/index.html">
 <meta property="og:site_name" content="Berg White's Blog">
-<meta property="og:description" content="TCP
-三次握手
+<meta property="og:description" content="一般存在四种情况，JavaScript会对变量的数据类型进行转换。
 
-三次握手是发生在建立连接的时候，大致过程是这样的。首先由客户端发起请求，然后服务端对请求进行响应，最后客户端再告知收到响应。具体的过程列在了下面。
-
-&amp;gt; 客户端发送带SYN标志的数据包给对方，告知需要建立连接；
-
-&amp;gt; 服务端收到后，回传一个带有SYN/ACK标志的数据包，告知收到建立连接请求；
-
-&amp;gt; 客户端回传一个带有ACK标志的数据包，代表握手结束并且建立TCP连接。">
-<meta property="og:updated_time" content="2017-02-24T14:31:04.610Z">
+目录123456789101112131415* if中的条件会被自动转为Boolean类型	* 会被转为false的数据	* 会被转为true的数据* 参与+运算都会被隐式的转为字符串	* 会被转为空字符串的数据	* 会被转为字符串的数据	* 会被转为数据类型标记的数据* 参与*运算都会被隐式的转为数字	* 会被转为0的数据">
+<meta property="og:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/fe.jpg">
+<meta property="og:updated_time" content="2017-08-30T11:11:29.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="传输层协议TCP和UDP">
-<meta name="twitter:description" content="TCP
-三次握手
+<meta name="twitter:title" content="对存在JavaScript隐式类型转换的四种情况的总结">
+<meta name="twitter:description" content="一般存在四种情况，JavaScript会对变量的数据类型进行转换。
 
-三次握手是发生在建立连接的时候，大致过程是这样的。首先由客户端发起请求，然后服务端对请求进行响应，最后客户端再告知收到响应。具体的过程列在了下面。
-
-&amp;gt; 客户端发送带SYN标志的数据包给对方，告知需要建立连接；
-
-&amp;gt; 服务端收到后，回传一个带有SYN/ACK标志的数据包，告知收到建立连接请求；
-
-&amp;gt; 客户端回传一个带有ACK标志的数据包，代表握手结束并且建立TCP连接。">
+目录123456789101112131415* if中的条件会被自动转为Boolean类型	* 会被转为false的数据	* 会被转为true的数据* 参与+运算都会被隐式的转为字符串	* 会被转为空字符串的数据	* 会被转为字符串的数据	* 会被转为数据类型标记的数据* 参与*运算都会被隐式的转为数字	* 会被转为0的数据">
+<meta name="twitter:image" content="http://atmp.oss-cn-qingdao.aliyuncs.com/img/fe.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Berg White&#39;s Blog" type="application/atom+xml">
   
@@ -190,85 +171,44 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-传输层协议TCP和UDP" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-对存在JavaScript隐式类型转换的四种情况的总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      传输层协议TCP和UDP
+      对存在JavaScript隐式类型转换的四种情况的总结
     </h1>
   
 
         
-        <a href="/2016/12/08/传输层协议TCP和UDP/" class="archive-article-date">
-  	<time datetime="2016-12-08T04:27:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-08</time>
+        <a href="/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/" class="archive-article-date">
+  	<time datetime="2017-08-30T11:11:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><blockquote>
-<p>三次握手</p>
+        <blockquote>
+<p>一般存在四种情况，JavaScript会对变量的数据类型进行转换。</p>
 </blockquote>
-<p>三次握手是发生在建立连接的时候，大致过程是这样的。首先由客户端发起请求，然后服务端对请求进行响应，最后客户端再告知收到响应。具体的过程列在了下面。</p>
-<ol>
-<li><p>> <code>客户端</code>发送带<code>SYN</code>标志的数据包给对方，告知需要建立连接；</p>
-</li>
-<li><p>> <code>服务端</code>收到后，回传一个带有<code>SYN/ACK</code>标志的数据包，告知收到建立连接请求；</p>
-</li>
-<li><p>> <code>客户端</code>回传一个带有<code>ACK</code>标志的数据包，代表握手结束并且建立TCP连接。</p>
-</li>
-</ol>
-<blockquote>
-<p>四次挥手</p>
-</blockquote>
-<p>四次挥手则是在断开连接的时候，过程如下。</p>
-<ol>
-<li><p>> <code>客户端</code>发送带<code>FIN</code>标志的数据包给对方，告知需要断开连接；</p>
-</li>
-<li><p>> <code>服务端</code>收到后，回传一个带有<code>ACK</code>标志的数据包，告知收到断开连接请求；</p>
-</li>
-<li><p>> <code>服务端</code>再次回传一个带有<code>FIN</code>标志的数据包，告知同意断开连接请求；</p>
-</li>
-<li><p>> <code>客户端</code>回传一个带有<code>ACK</code>标志的数据包，代表挥手结束并且断开TCP连接。</p>
-</li>
-</ol>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>UDP没有类似TCP的三次握手机制，而是直接把数据发送出去。因此传输不具备可靠性。但是在网络极差的时候，凭借其不需要三次握手和四次挥手特性，却能高效的把数据传输出去。</p>
-<h4 id="词汇"><a href="#词汇" class="headerlink" title="词汇"></a>词汇</h4><p>现在把上面出现的词汇分类整理一下吧。</p>
-<ul>
-<li><p>传输协议</p>
-<ul>
-<li>TCP - Transmission Control Protocol - 传输控制协议</li>
-<li>UDP - User Datagram Protocol - 用户数据协议</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>握手状态</p>
-<ul>
-<li>SYN - synchronous - 建立连接</li>
-<li>ACK - acknowledgement - 确认收到</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>挥手状态<ul>
-<li>FIN - final - 关闭连接</li>
-</ul>
-</li>
-</ul>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>这篇文章是我的读书笔记。综合了书中的知识以及参考了百度百科关于四次挥手的解释，总结出了对传输层协议TCP和UDP的浅显认知。其中，词汇的命名参考了园友azraelly的TCP的状态一文。</p>
-<p>关于TCP和UDP的应用场景，以及在传输时都带有那些状态和数据，文中都没有提及。改日有时间再专门写一篇这样的文章。</p>
-<ul>
-<li><p>[0] 图解HTTP</p>
-</li>
-<li><p>[1] <a href="http://baike.baidu.com/link?url=HbEw1gj0lBfj9-D5RdSYHPLJpUOiybgxgnqFRtw1PJbfputfe49zcGElxlb-PrGO7276UWuOgmf8gPvvwTWErV5DBKzIzNrXfjlrwBN3JluLWTdrZsv2aaxXCch9uUn-" target="_blank" rel="external">四次挥手</a></p>
-</li>
-<li>[2] <a href="http://www.cnblogs.com/azraelly/archive/2012/12/25/2832393.html" target="_blank" rel="external">TCP的状态 (SYN, FIN, ACK, PSH, RST, URG)</a></li>
-</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* if中的条件会被自动转为Boolean类型</div><div class="line">	* 会被转为false的数据</div><div class="line">	* 会被转为true的数据</div><div class="line">* 参与+运算都会被隐式的转为字符串</div><div class="line">	* 会被转为空字符串的数据</div><div class="line">	* 会被转为字符串的数据</div><div class="line">	* 会被转为数据类型标记的数据</div><div class="line">* 参与*运算都会被隐式的转为数字</div><div class="line">	* 会被转为0的数据</div><div class="line">	* 会被转为1的数据</div><div class="line">	* 会被转为NaN的数据</div><div class="line">* == 运算符</div><div class="line">	* 为true的时候</div><div class="line">	* 为false的时候</div></pre></td></tr></table></figure>
+<h2 id="if中的条件会被自动转为Boolean类型"><a href="#if中的条件会被自动转为Boolean类型" class="headerlink" title="if中的条件会被自动转为Boolean类型"></a>if中的条件会被自动转为Boolean类型</h2><h3 id="会被转为false的数据"><a href="#会被转为false的数据" class="headerlink" title="会被转为false的数据"></a>会被转为false的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="literal">false</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="string">''</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="literal">null</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="literal">undefined</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="literal">NaN</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div></pre></td></tr></table></figure>
+<h3 id="会被转为true的数据"><a href="#会被转为true的数据" class="headerlink" title="会被转为true的数据"></a>会被转为true的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div><div class="line"><span class="keyword">if</span>(<span class="string">'test'</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div><div class="line"><span class="keyword">if</span>([]) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div><div class="line"><span class="keyword">if</span>(&#123;&#125;) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div></pre></td></tr></table></figure>
+<h2 id="参与-运算都会被隐式的转为字符串"><a href="#参与-运算都会被隐式的转为字符串" class="headerlink" title="参与+运算都会被隐式的转为字符串"></a>参与+运算都会被隐式的转为字符串</h2><h3 id="会被转为空字符串的数据"><a href="#会被转为空字符串的数据" class="headerlink" title="会被转为空字符串的数据"></a>会被转为空字符串的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'str-'</span> + <span class="string">''</span>  <span class="comment">// str-</span></div><div class="line"><span class="string">'str-'</span> + []</div></pre></td></tr></table></figure>
+<h3 id="会被转为字符串的数据"><a href="#会被转为字符串的数据" class="headerlink" title="会被转为字符串的数据"></a>会被转为字符串的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'str-'</span> + <span class="string">'1'</span>  <span class="comment">// "str-1"</span></div><div class="line"><span class="string">'str-'</span> + <span class="number">1</span>  <span class="comment">// "str-1"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">false</span>  <span class="comment">// "str-false"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">true</span>  <span class="comment">// "str-true"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">null</span>  <span class="comment">// "str-null"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">undefined</span>  <span class="comment">// "str-undefined"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">NaN</span>  <span class="comment">// "str-NaN"</span></div></pre></td></tr></table></figure>
+<h3 id="会被转为数据类型标记的数据"><a href="#会被转为数据类型标记的数据" class="headerlink" title="会被转为数据类型标记的数据"></a>会被转为数据类型标记的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'str-'</span> + &#123;&#125;  <span class="comment">// "str-[object Object]"</span></div><div class="line"><span class="string">'str-'</span> + &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// "str-[object Object]"</span></div></pre></td></tr></table></figure>
+<h2 id="参与-运算都会被隐式的转为数字"><a href="#参与-运算都会被隐式的转为数字" class="headerlink" title="参与*运算都会被隐式的转为数字"></a>参与*运算都会被隐式的转为数字</h2><h3 id="会被转为0的数据"><a href="#会被转为0的数据" class="headerlink" title="会被转为0的数据"></a>会被转为0的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">2</span> * <span class="string">''</span>  <span class="comment">// 0</span></div><div class="line"><span class="number">2</span> * []  <span class="comment">// 0</span></div><div class="line"><span class="number">2</span> * <span class="literal">false</span>  <span class="comment">// 0</span></div></pre></td></tr></table></figure>
+<h3 id="会被转为1的数据"><a href="#会被转为1的数据" class="headerlink" title="会被转为1的数据"></a>会被转为1的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">2</span> * <span class="string">'1'</span>  <span class="comment">// 2</span></div><div class="line"><span class="number">2</span> * [<span class="number">1</span>]  <span class="comment">// 2</span></div><div class="line"><span class="number">2</span> * <span class="literal">true</span>  <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<h3 id="会被转为NaN的数据"><a href="#会被转为NaN的数据" class="headerlink" title="会被转为NaN的数据"></a>会被转为NaN的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">2</span> * &#123;&#125;  <span class="comment">// NaN</span></div><div class="line"><span class="number">2</span> * &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="== 运算符"></a>== 运算符</h2><h3 id="为true的时候"><a href="#为true的时候" class="headerlink" title="为true的时候"></a>为true的时候</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">0</span> == <span class="literal">false</span>  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == <span class="string">''</span>  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == <span class="string">'0'</span>  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == []  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == [<span class="number">0</span>]  <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="number">1</span> == <span class="literal">true</span>  <span class="comment">// true</span></div><div class="line"><span class="number">1</span> == <span class="string">'1'</span>  <span class="comment">// true</span></div><div class="line"><span class="number">1</span> == [<span class="number">1</span>]  <span class="comment">// true</span></div><div class="line"></div><div class="line">[<span class="number">1</span>] == <span class="literal">true</span>  <span class="comment">// true</span></div><div class="line">[] == <span class="literal">false</span>  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h3 id="为false的时候"><a href="#为false的时候" class="headerlink" title="为false的时候"></a>为false的时候</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">0</span> == &#123;&#125;  <span class="comment">// false</span></div><div class="line"><span class="number">0</span> == <span class="literal">null</span>  <span class="comment">// false</span></div><div class="line"><span class="number">0</span> == <span class="literal">undefined</span>  <span class="comment">// false</span></div><div class="line"><span class="number">0</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line"><span class="number">1</span> == &#123;&#125;  <span class="comment">// false</span></div><div class="line"><span class="number">1</span> == <span class="literal">null</span>  <span class="comment">// false</span></div><div class="line"><span class="number">1</span> == <span class="literal">undefined</span>  <span class="comment">// false</span></div><div class="line"><span class="number">1</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line">[] == []  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == [<span class="number">1</span>]  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == &#123;&#125;  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">false</span>  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">null</span>  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">undefined</span>  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line">&#123;&#125; == &#123;&#125;  <span class="comment">// false</span></div><div class="line">&#123;<span class="attr">a</span>:<span class="number">1</span>&#125; == &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>注：空数组[]，在+运算符下是转为空字符串’’，在*运算符下是转为数字0。但在if语句中，则转为true。</p>
+<p>欢迎关注前端进阶指南微信公众号：</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/fe.jpg" alt="前端进阶指南"></p>
+<p>另外我也创了一个对应的QQ群：660112451，欢迎一起交流。</p>
 
       
 
@@ -308,7 +248,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -364,7 +304,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://bergwhite.github.io/2016/12/08/传输层协议TCP和UDP/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://bergwhite.github.io/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -378,15 +318,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/12/20/常用的14种HTTP状态码速查手册/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          常用的14种HTTP状态码速查手册
-        
-      </div>
-    </a>
   
+    <a href="/2017/08/26/Zepto源码分析（二）奇淫技巧总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Zepto源码分析（二）奇淫技巧总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -398,7 +334,7 @@ var _hmt = _hmt || [];
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="传输层协议TCP和UDP" data-title="传输层协议TCP和UDP" data-url="https://bergwhite.github.io/2016/12/08/传输层协议TCP和UDP/"></div>
+	<div class="ds-thread" data-thread-key="对存在JavaScript隐式类型转换的四种情况的总结" data-title="对存在JavaScript隐式类型转换的四种情况的总结" data-url="https://bergwhite.github.io/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

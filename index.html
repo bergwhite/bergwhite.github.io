@@ -161,6 +161,85 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-对存在JavaScript隐式类型转换的四种情况的总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/">对存在JavaScript隐式类型转换的四种情况的总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/" class="archive-article-date">
+  	<time datetime="2017-08-30T11:11:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一般存在四种情况，JavaScript会对变量的数据类型进行转换。</p>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* if中的条件会被自动转为Boolean类型</div><div class="line">	* 会被转为false的数据</div><div class="line">	* 会被转为true的数据</div><div class="line">* 参与+运算都会被隐式的转为字符串</div><div class="line">	* 会被转为空字符串的数据</div><div class="line">	* 会被转为字符串的数据</div><div class="line">	* 会被转为数据类型标记的数据</div><div class="line">* 参与*运算都会被隐式的转为数字</div><div class="line">	* 会被转为0的数据</div><div class="line">	* 会被转为1的数据</div><div class="line">	* 会被转为NaN的数据</div><div class="line">* == 运算符</div><div class="line">	* 为true的时候</div><div class="line">	* 为false的时候</div></pre></td></tr></table></figure>
+<h2 id="if中的条件会被自动转为Boolean类型"><a href="#if中的条件会被自动转为Boolean类型" class="headerlink" title="if中的条件会被自动转为Boolean类型"></a>if中的条件会被自动转为Boolean类型</h2><h3 id="会被转为false的数据"><a href="#会被转为false的数据" class="headerlink" title="会被转为false的数据"></a>会被转为false的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="literal">false</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="string">''</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="literal">null</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="literal">undefined</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div><div class="line"><span class="keyword">if</span>(<span class="literal">NaN</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)</div></pre></td></tr></table></figure>
+<h3 id="会被转为true的数据"><a href="#会被转为true的数据" class="headerlink" title="会被转为true的数据"></a>会被转为true的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div><div class="line"><span class="keyword">if</span>(<span class="string">'test'</span>) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div><div class="line"><span class="keyword">if</span>([]) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div><div class="line"><span class="keyword">if</span>(&#123;&#125;) <span class="built_in">console</span>.log(<span class="number">2333</span>)  <span class="comment">// 2333</span></div></pre></td></tr></table></figure>
+<h2 id="参与-运算都会被隐式的转为字符串"><a href="#参与-运算都会被隐式的转为字符串" class="headerlink" title="参与+运算都会被隐式的转为字符串"></a>参与+运算都会被隐式的转为字符串</h2><h3 id="会被转为空字符串的数据"><a href="#会被转为空字符串的数据" class="headerlink" title="会被转为空字符串的数据"></a>会被转为空字符串的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'str-'</span> + <span class="string">''</span>  <span class="comment">// str-</span></div><div class="line"><span class="string">'str-'</span> + []</div></pre></td></tr></table></figure>
+<h3 id="会被转为字符串的数据"><a href="#会被转为字符串的数据" class="headerlink" title="会被转为字符串的数据"></a>会被转为字符串的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'str-'</span> + <span class="string">'1'</span>  <span class="comment">// "str-1"</span></div><div class="line"><span class="string">'str-'</span> + <span class="number">1</span>  <span class="comment">// "str-1"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">false</span>  <span class="comment">// "str-false"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">true</span>  <span class="comment">// "str-true"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">null</span>  <span class="comment">// "str-null"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">undefined</span>  <span class="comment">// "str-undefined"</span></div><div class="line"><span class="string">'str-'</span> + <span class="literal">NaN</span>  <span class="comment">// "str-NaN"</span></div></pre></td></tr></table></figure>
+<h3 id="会被转为数据类型标记的数据"><a href="#会被转为数据类型标记的数据" class="headerlink" title="会被转为数据类型标记的数据"></a>会被转为数据类型标记的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'str-'</span> + &#123;&#125;  <span class="comment">// "str-[object Object]"</span></div><div class="line"><span class="string">'str-'</span> + &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// "str-[object Object]"</span></div></pre></td></tr></table></figure>
+<h2 id="参与-运算都会被隐式的转为数字"><a href="#参与-运算都会被隐式的转为数字" class="headerlink" title="参与*运算都会被隐式的转为数字"></a>参与*运算都会被隐式的转为数字</h2><h3 id="会被转为0的数据"><a href="#会被转为0的数据" class="headerlink" title="会被转为0的数据"></a>会被转为0的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">2</span> * <span class="string">''</span>  <span class="comment">// 0</span></div><div class="line"><span class="number">2</span> * []  <span class="comment">// 0</span></div><div class="line"><span class="number">2</span> * <span class="literal">false</span>  <span class="comment">// 0</span></div></pre></td></tr></table></figure>
+<h3 id="会被转为1的数据"><a href="#会被转为1的数据" class="headerlink" title="会被转为1的数据"></a>会被转为1的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">2</span> * <span class="string">'1'</span>  <span class="comment">// 2</span></div><div class="line"><span class="number">2</span> * [<span class="number">1</span>]  <span class="comment">// 2</span></div><div class="line"><span class="number">2</span> * <span class="literal">true</span>  <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<h3 id="会被转为NaN的数据"><a href="#会被转为NaN的数据" class="headerlink" title="会被转为NaN的数据"></a>会被转为NaN的数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">2</span> * &#123;&#125;  <span class="comment">// NaN</span></div><div class="line"><span class="number">2</span> * &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="== 运算符"></a>== 运算符</h2><h3 id="为true的时候"><a href="#为true的时候" class="headerlink" title="为true的时候"></a>为true的时候</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">0</span> == <span class="literal">false</span>  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == <span class="string">''</span>  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == <span class="string">'0'</span>  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == []  <span class="comment">// true</span></div><div class="line"><span class="number">0</span> == [<span class="number">0</span>]  <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="number">1</span> == <span class="literal">true</span>  <span class="comment">// true</span></div><div class="line"><span class="number">1</span> == <span class="string">'1'</span>  <span class="comment">// true</span></div><div class="line"><span class="number">1</span> == [<span class="number">1</span>]  <span class="comment">// true</span></div><div class="line"></div><div class="line">[<span class="number">1</span>] == <span class="literal">true</span>  <span class="comment">// true</span></div><div class="line">[] == <span class="literal">false</span>  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h3 id="为false的时候"><a href="#为false的时候" class="headerlink" title="为false的时候"></a>为false的时候</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="number">0</span> == &#123;&#125;  <span class="comment">// false</span></div><div class="line"><span class="number">0</span> == <span class="literal">null</span>  <span class="comment">// false</span></div><div class="line"><span class="number">0</span> == <span class="literal">undefined</span>  <span class="comment">// false</span></div><div class="line"><span class="number">0</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line"><span class="number">1</span> == &#123;&#125;  <span class="comment">// false</span></div><div class="line"><span class="number">1</span> == <span class="literal">null</span>  <span class="comment">// false</span></div><div class="line"><span class="number">1</span> == <span class="literal">undefined</span>  <span class="comment">// false</span></div><div class="line"><span class="number">1</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line">[] == []  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == [<span class="number">1</span>]  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == &#123;&#125;  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">false</span>  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">null</span>  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">undefined</span>  <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>] == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"></div><div class="line">&#123;&#125; == &#123;&#125;  <span class="comment">// false</span></div><div class="line">&#123;<span class="attr">a</span>:<span class="number">1</span>&#125; == &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;  <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>注：空数组[]，在+运算符下是转为空字符串’’，在*运算符下是转为数字0。但在if语句中，则转为true。</p>
+<p>欢迎关注前端进阶指南微信公众号：</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/fe.jpg" alt="前端进阶指南"></p>
+<p>另外我也创了一个对应的QQ群：660112451，欢迎一起交流。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/30/对存在JavaScript隐式类型转换的四种情况的总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Zepto源码分析（二）奇淫技巧总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -234,7 +313,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ZeptoJS</a>
         		</li>
       		
 		</ul>
@@ -331,7 +410,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ZeptoJS</a>
         		</li>
       		
 		</ul>
@@ -1293,103 +1372,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-《JavaScript面向对象编程指南（第2版）》读书笔记（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/">《JavaScript面向对象编程指南（第2版）》读书笔记（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/" class="archive-article-date">
-  	<time datetime="2017-04-22T14:11:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>《JavaScript面向对象编程指南（第2版）》读书笔记（一）</li>
-<li><a href="https://bergwhite.github.io/2017/05/04/%E3%80%8AJavaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">《JavaScript面向对象编程指南（第2版）》读书笔记（二）</a></li>
-</ul>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">一、对象</div><div class="line">  1.1 获取属性值的方式</div><div class="line">  1.2 获取动态生成的属性的值</div><div class="line">二、数组</div><div class="line">  2.1 检测是否为数组</div><div class="line">  2.2 增加数组长度导致未赋值的位置为undefined</div><div class="line">  2.3 用闭包实现简易迭代器</div><div class="line">三、作用域</div><div class="line">  3.1 函数作用域（局部变量）</div><div class="line">  3.2 不存在块级作用域</div><div class="line">  3.3 变量泄露</div><div class="line">  3.4 变量提升</div><div class="line">  3.5 临时作用域</div><div class="line">四、闭包</div><div class="line">  4.1 操作闭包中的值</div><div class="line">五、事件监听</div><div class="line">六、类型检测</div><div class="line">七、类型转换</div><div class="line">八、URL编码</div><div class="line">  8.1 编码</div><div class="line">  8.2 解码</div><div class="line">九、JSON格式</div><div class="line">  9.1 转为JSON格式</div><div class="line">  9.2 转为对象</div><div class="line">十、兼容性问题</div></pre></td></tr></table></figure>
-<h2 id="一、对象"><a href="#一、对象" class="headerlink" title="一、对象"></a>一、对象</h2><h3 id="1-1-获取属性值的方式"><a href="#1-1-获取属性值的方式" class="headerlink" title="1.1 获取属性值的方式"></a>1.1 获取属性值的方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">water = &#123;</div><div class="line">  <span class="attr">down</span>: <span class="literal">false</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(water.down) <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(water[<span class="string">'down'</span>]) <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<h3 id="1-2-获取动态生成的属性的值"><a href="#1-2-获取动态生成的属性的值" class="headerlink" title="1.2 获取动态生成的属性的值"></a>1.2 获取动态生成的属性的值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> type = <span class="string">'down'</span></div><div class="line"><span class="built_in">console</span>.log(water[type]) <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<h2 id="二、数组"><a href="#二、数组" class="headerlink" title="二、数组"></a>二、数组</h2><h3 id="2-1-检测是否为数组"><a href="#2-1-检测是否为数组" class="headerlink" title="2.1 检测是否为数组"></a>2.1 检测是否为数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">typeof</span>([<span class="number">1</span>,<span class="number">2</span>])  <span class="comment">// object</span></div><div class="line"><span class="built_in">Array</span>.isArray([<span class="number">1</span>,<span class="number">2</span>])  <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.call([<span class="number">1</span>,<span class="number">2</span>])  <span class="comment">// [object Array]</span></div><div class="line"><span class="built_in">Array</span>.isArray(<span class="built_in">Array</span>.prototype)  <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Array</span>.prototype)  <span class="comment">// [object Array]</span></div></pre></td></tr></table></figure>
-<h3 id="2-2-增加数组长度导致未赋值的位置为undefined"><a href="#2-2-增加数组长度导致未赋值的位置为undefined" class="headerlink" title="2.2 增加数组长度导致未赋值的位置为undefined"></a>2.2 增加数组长度导致未赋值的位置为undefined</h3><p>减少数组长度则会裁去多余的值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> x = [<span class="number">1</span>,<span class="number">2</span>];</div><div class="line">x.length = <span class="number">7</span>;</div><div class="line"><span class="built_in">console</span>.log(x);  <span class="comment">// [1, 2, undefined × 5]</span></div><div class="line">x.length = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(x);  <span class="comment">// [1]</span></div></pre></td></tr></table></figure>
-<h3 id="2-3-用闭包实现简易迭代器"><a href="#2-3-用闭包实现简易迭代器" class="headerlink" title="2.3 用闭包实现简易迭代器"></a>2.3 用闭包实现简易迭代器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> next = setup([<span class="number">3</span>,<span class="number">3</span>,<span class="number">9</span>]);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x[i++]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">next();  <span class="comment">// 3</span></div><div class="line">next();  <span class="comment">// 3</span></div><div class="line">next();  <span class="comment">// 9</span></div><div class="line">next();  <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<h2 id="三、作用域"><a href="#三、作用域" class="headerlink" title="三、作用域"></a>三、作用域</h2><h3 id="3-1-函数作用域（局部变量）"><a href="#3-1-函数作用域（局部变量）" class="headerlink" title="3.1 函数作用域（局部变量）"></a>3.1 函数作用域（局部变量）</h3><p>不能在函数体外直接访问函数内变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">water</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> <span class="keyword">var</span> direction = <span class="string">'down'</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(direction)  <span class="comment">// Uncaught ReferenceError: direction is not defined</span></div></pre></td></tr></table></figure>
-<h3 id="3-2-不存在块级作用域"><a href="#3-2-不存在块级作用域" class="headerlink" title="3.2 不存在块级作用域"></a>3.2 不存在块级作用域</h3><p>for、if等代码块中的变量不是局部变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">if</span>(water)&#123;</div><div class="line">  <span class="keyword">var</span> down = <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(down)  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h3 id="3-3-变量泄露"><a href="#3-3-变量泄露" class="headerlink" title="3.3 变量泄露"></a>3.3 变量泄露</h3><p>函数体内的变量未声明，会在函数第一次执行的时候泄露成全局变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">water</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  direction = <span class="string">'down'</span></div><div class="line">&#125;</div><div class="line">water()  <span class="comment">// 执行函数</span></div><div class="line"><span class="built_in">console</span>.log(direction)  <span class="comment">// down</span></div></pre></td></tr></table></figure>
-<h3 id="3-4-变量提升"><a href="#3-4-变量提升" class="headerlink" title="3.4 变量提升"></a>3.4 变量提升</h3><p>已声明的变量名会提升至顶部，值不会提升。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> down = <span class="literal">true</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">water</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 变量提升覆盖了外部down，由于值没有提升，所以为undefined</span></div><div class="line">  <span class="built_in">console</span>.log(down)  <span class="comment">// undefined</span></div><div class="line">  <span class="keyword">var</span> down = <span class="literal">false</span>  <span class="comment">// false</span></div><div class="line">  <span class="built_in">console</span>.log(down)</div><div class="line">&#125;</div><div class="line">water()</div></pre></td></tr></table></figure>
-<h3 id="3-5-临时作用域"><a href="#3-5-临时作用域" class="headerlink" title="3.5 临时作用域"></a>3.5 临时作用域</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">call和apply借用另一个对象的方法，提高代码复用</div><div class="line">第一个参数为<span class="keyword">this</span>的指向，第二个参数为传入的参数，apply传入数组</div><div class="line">构造函数不使用<span class="keyword">new</span> <span class="keyword">this</span>的值会指向<span class="built_in">window</span></div></pre></td></tr></table></figure>
-<h2 id="四、闭包"><a href="#四、闭包" class="headerlink" title="四、闭包"></a>四、闭包</h2><h3 id="4-1-操作闭包中的值"><a href="#4-1-操作闭包中的值" class="headerlink" title="4.1 操作闭包中的值"></a>4.1 操作闭包中的值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> nature = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> water = &#123;&#125;</div><div class="line">  water.down = <span class="literal">false</span></div><div class="line">  water.get = <span class="function"><span class="keyword">function</span>(<span class="params">type</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> water[type]</div><div class="line">  &#125;</div><div class="line">  water.set = <span class="function"><span class="keyword">function</span>(<span class="params">type,val</span>) </span>&#123;</div><div class="line">	water[type] = val</div><div class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span>(val) === <span class="string">'boolean'</span> ? <span class="literal">true</span> : <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">getWater</span>: water.get,</div><div class="line">    <span class="attr">setWater</span>: water.set</div><div class="line">  &#125;</div><div class="line">&#125;)()</div><div class="line"><span class="built_in">console</span>.log(nature.getWater(<span class="string">'down'</span>))  <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(nature.setWater(<span class="string">'down'</span>,<span class="literal">true</span>))  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="五、事件监听"><a href="#五、事件监听" class="headerlink" title="五、事件监听"></a>五、事件监听</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> event = &#123;</div><div class="line">  <span class="attr">add</span>: <span class="function"><span class="keyword">function</span> (<span class="params"> dom,type,func </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.addEventListener)&#123;</div><div class="line">      dom.addEventListener( type,func,<span class="literal">false</span> )</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 兼容IE9以下</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.attachEvent) &#123;</div><div class="line">      dom.attachEvent(<span class="string">'on'</span> + type,func)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      dom[<span class="string">'on'</span> + type] = func</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">del</span>: <span class="function"><span class="keyword">function</span> (<span class="params"> dom,type,func </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.addEventListener)&#123;</div><div class="line">      dom.removeEventListener( type,func,<span class="literal">false</span> )</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.attachEvent) &#123;</div><div class="line">      dom.detachEvent(<span class="string">'on'</span> + type,func)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      dom[<span class="string">'on'</span> + type] = <span class="literal">null</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'event received'</span>)</div><div class="line">&#125;</div><div class="line">event.add(<span class="built_in">document</span>.body,<span class="string">'click'</span>,f)</div><div class="line">event.del(<span class="built_in">document</span>.body,<span class="string">'click'</span>,f)</div></pre></td></tr></table></figure>
-<h2 id="六、类型检测"><a href="#六、类型检测" class="headerlink" title="六、类型检测"></a>六、类型检测</h2><h3 id="6-1-常用类型"><a href="#6-1-常用类型" class="headerlink" title="6.1 常用类型"></a>6.1 常用类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">typeof</span>(<span class="number">1</span>)  <span class="comment">// "number"</span></div><div class="line"></div><div class="line">number/boolean/string/<span class="literal">undefined</span>/object/<span class="function"><span class="keyword">function</span></span></div></pre></td></tr></table></figure>
-<h3 id="6-2-继承检测"><a href="#6-2-继承检测" class="headerlink" title="6.2 继承检测"></a>6.2 继承检测</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Water</span> (<span class="params">name,status</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">  <span class="keyword">this</span>.status = status</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> seaWater = <span class="keyword">new</span> Water(<span class="string">'sea'</span>,<span class="string">'warm'</span>)</div><div class="line">seaWater <span class="keyword">instanceof</span> Water  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h3 id="6-3-NaN和isFinite检测"><a href="#6-3-NaN和isFinite检测" class="headerlink" title="6.3 NaN和isFinite检测"></a>6.3 NaN和isFinite检测</h3><p>NaN不等于NaN，检测需要使用isNaN函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>)  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="七、类型转换"><a href="#七、类型转换" class="headerlink" title="七、类型转换"></a>七、类型转换</h2><h3 id="7-1-转为整形"><a href="#7-1-转为整形" class="headerlink" title="7.1 转为整形"></a>7.1 转为整形</h3><p>parseInt和parseFloat碰到第一个异常字符就会终止。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="number">66.5</span>t))  <span class="comment">// 66.5</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(t66<span class="number">.5</span>t))  <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
-<h3 id="7-2-null和undefined"><a href="#7-2-null和undefined" class="headerlink" title="7.2 null和undefined"></a>7.2 null和undefined</h3><p>数值超出范围则显示Infinity。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>*<span class="literal">undefined</span>)  <span class="comment">// NaN</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>*<span class="literal">null</span>)  <span class="comment">// 0</span></div></pre></td></tr></table></figure>
-<h2 id="八、URL编码"><a href="#八、URL编码" class="headerlink" title="八、URL编码"></a>八、URL编码</h2><h3 id="8-1-编码"><a href="#8-1-编码" class="headerlink" title="8.1 编码"></a>8.1 编码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> src = <span class="string">"http://www.cnblogs.com/bergwhite/p/6657943.html"</span></div><div class="line"><span class="keyword">var</span> srcURI = <span class="built_in">encodeURI</span>(src)  <span class="comment">// "http://www.cnblogs.com/bergwhite/p/6657943.html"</span></div><div class="line"><span class="keyword">var</span> srcURICom = <span class="built_in">encodeURIComponent</span>(src)  <span class="comment">// "http%3A%2F%2Fwww.cnblogs.com%2Fbergwhite%2Fp%2F6657943.html"</span></div></pre></td></tr></table></figure>
-<h3 id="8-2-解码"><a href="#8-2-解码" class="headerlink" title="8.2 解码"></a>8.2 解码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">decodeURI</span>(srcURI)  <span class="comment">// "http://www.cnblogs.com/bergwhite/p/6657943.html"</span></div><div class="line"><span class="built_in">decodeURIComponent</span>(srcURI)  <span class="comment">// "http://www.cnblogs.com/bergwhite/p/6657943.html"</span></div></pre></td></tr></table></figure>
-<h2 id="九、JSON格式"><a href="#九、JSON格式" class="headerlink" title="九、JSON格式"></a>九、JSON格式</h2><h3 id="9-1-转为JSON格式"><a href="#9-1-转为JSON格式" class="headerlink" title="9.1 转为JSON格式"></a>9.1 转为JSON格式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> water = &#123;</div><div class="line">  <span class="attr">down</span>: <span class="literal">false</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> waterJSON = <span class="built_in">JSON</span>.stringify(water)  <span class="comment">// "&#123;"down":false&#125;"</span></div></pre></td></tr></table></figure>
-<h3 id="9-2-转为对象"><a href="#9-2-转为对象" class="headerlink" title="9.2 转为对象"></a>9.2 转为对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">JSON</span>.parse(waterJSON)  <span class="comment">// Object &#123;down: false&#125;</span></div></pre></td></tr></table></figure>
-<h2 id="十、兼容性问题"><a href="#十、兼容性问题" class="headerlink" title="十、兼容性问题"></a>十、兼容性问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">parseInt</span>(<span class="number">09</span>) <span class="comment">// ES5中默认不转换八进制，ES3会默认作为八进制</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="number">09</span>,<span class="number">10</span>)  <span class="comment">// 当值为日期的时候，作为十进制处理</span></div></pre></td></tr></table></figure>
-<p>感谢大家的阅读。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/22/《JavaScript面向对象编程指南（第2版）》读书笔记（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1483,15 +1465,19 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ZeptoJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
