@@ -161,6 +161,116 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-用 Vue 全家桶二次开发 V2EX 社区" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/用 Vue 全家桶二次开发 V2EX 社区/">用 Vue 全家桶二次开发 V2EX 社区</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/16/用 Vue 全家桶二次开发 V2EX 社区/" class="archive-article-date">
+  	<time datetime="2017-05-16T03:23:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、开发背景"><a href="#一、开发背景" class="headerlink" title="一、开发背景"></a>一、开发背景</h2><p>为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。 <a href="http://47.93.252.247:8080/#/" target="_blank" rel="external">在线预览</a> （为了实现跨域，直接npm run dev部署的，首次加载略慢）</p>
+<p>API来自官方以及<a href="https://github.com/djyde/V2EX-API" target="_blank" rel="external">djyde</a>的整理。</p>
+<p>项目地址：<a href="https://github.com/bergwhite/v2ex-vue" target="_blank" rel="external">v2ex-vue</a></p>
+<h2 id="二、项目演示"><a href="#二、项目演示" class="headerlink" title="二、项目演示"></a>二、项目演示</h2><p>分类页</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/topic.gif" alt="topic"></p>
+<p>文章页 &amp; 用户页</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/article%26user.gif" alt="article &amp; user"></p>
+<p>懒加载</p>
+<p><img src="http://atmp.oss-cn-qingdao.aliyuncs.com/img/lazyLoad.gif" alt="lazyLoad"></p>
+<blockquote>
+<p>路由</p>
+</blockquote>
+<p>首页默认显示最新的帖子</p>
+<ul>
+<li>首页 /</li>
+<li>全部 /topic</li>
+<li>分类 /topic/:name</li>
+<li>文章 /article/:id</li>
+<li>用户 /user/:name</li>
+</ul>
+<h2 id="三、项目优势"><a href="#三、项目优势" class="headerlink" title="三、项目优势"></a>三、项目优势</h2><ul>
+<li>界面设计简洁</li>
+<li>沉浸式的阅读体验</li>
+<li>可以按分类/文章/用户浏览</li>
+<li>在文章页显示用户评论</li>
+<li>图片使用懒加载模式</li>
+<li>总之，实现了你看帖所需要的一切</li>
+<li>项目基于Vue全家桶</li>
+<li>适配移动端</li>
+<li>有完善的文档注释</li>
+<li>有疑问欢迎提交issue</li>
+<li>感兴趣的欢迎给颗star ^_^</li>
+<li>…</li>
+</ul>
+<h2 id="四、项目缺陷"><a href="#四、项目缺陷" class="headerlink" title="四、项目缺陷"></a>四、项目缺陷</h2><ul>
+<li>不支持翻页（没有找到翻页的API）</li>
+<li>在线演示首次加载较慢（为了能跨域显示最新内容，直接用npm run dev部署的）</li>
+<li>打算使用nginx部署，但是在代理的时候遇到了问题（https部署成功，反向代理失败）</li>
+<li>配置文件在下面，希望大家帮忙看看问题在哪</li>
+<li>…</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen    80;</div><div class="line">    listen    443;</div><div class="line">    server_name localhost;</div><div class="line">    ssl on;</div><div class="line">    ssl_certificate /etc/nginx/ssl/nginx.crt;</div><div class="line">    ssl_certificate_key /etc/nginx/ssl/nginx.key;</div><div class="line">    location /api/ &#123;</div><div class="line">        proxy_set_header  X-Real-IP  $remote_addr;</div><div class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">        proxy_pass https://www.v2ex.com/api/;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="五、项目安装"><a href="#五、项目安装" class="headerlink" title="五、项目安装"></a>五、项目安装</h2><p>项目兼容IE9+，使用项目前，请确保安装好了NodeJS。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git clone https://github.com/bergwhite/v2ex-vue.git  // 克隆项目</div><div class="line">cd v2ex-vue  // 进入项目目录</div><div class="line">npm install  // 安装依赖</div><div class="line">npm run dev  // 运行项目</div></pre></td></tr></table></figure>
+<h2 id="六、解决方案"><a href="#六、解决方案" class="headerlink" title="六、解决方案"></a>六、解决方案</h2><h3 id="6-1-跨域方案"><a href="#6-1-跨域方案" class="headerlink" title="6.1 跨域方案"></a>6.1 跨域方案</h3><p>本地开发中，通过配置代理表实现跨域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">config/index.js</div><div class="line">-------------------</div><div class="line">proxyTable: &#123;</div><div class="line">  &apos;/api&apos;: &#123;</div><div class="line">    target: &apos;https://www.v2ex.com&apos;,</div><div class="line">    changeOrigin: true,</div><div class="line">    pathRewrite: &#123;</div><div class="line">      &apos;^/api&apos;: &apos;/api&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6-2-Vuex支持IE"><a href="#6-2-Vuex支持IE" class="headerlink" title="6.2 Vuex支持IE"></a>6.2 Vuex支持IE</h3><p>直接引入Vuex无法在IE中显示，引入babel-polyfill来兼容IE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">npm install babel-polyfill --save-dev  // 安装babel-polyfill</div><div class="line"></div><div class="line">src/main.js</div><div class="line">---------------</div><div class="line">import &apos;babel-polyfill&apos;  // 在vue主文件中导入</div></pre></td></tr></table></figure>
+<p>PS：正在找工作，北京有坑的欢迎联系</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/16/用 Vue 全家桶二次开发 V2EX 社区/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-《JavaScript面向对象编程指南（第2版）》读书笔记（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1316,166 +1426,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-前端总结·基础篇·CSS（一）布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/19/前端总结·基础篇·CSS（一）布局/">前端总结·基础篇·CSS（一）布局</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/19/前端总结·基础篇·CSS（一）布局/" class="archive-article-date">
-  	<time datetime="2017-02-19T15:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>前端总结系列</p>
-</blockquote>
-<ul>
-<li>前端总结·基础篇·CSS（一）布局</li>
-<li><a href="https://bergwhite.github.io/2017/02/24/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7CSS%EF%BC%88%E4%BA%8C%EF%BC%89%E8%A7%86%E8%A7%89/">前端总结·基础篇·CSS（二）视觉</a></li>
-<li><a href="https://bergwhite.github.io/2017/03/01/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7CSS%EF%BC%88%E4%B8%89%EF%BC%89%E8%A1%A5%E5%85%85/">前端总结·基础篇·CSS（三）补充</a></li>
-<li><a href="https://bergwhite.github.io/2017/03/06/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E4%B8%80%EF%BC%89%E5%8E%9F%E5%9E%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E9%93%BE%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88String%EF%BC%89/">前端总结·基础篇·JS（一）原型、原型链、构造函数和字符串（String）</a></li>
-<li><a href="https://bergwhite.github.io/2017/03/14/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E4%BA%8C%EF%BC%89%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E5%8E%BB%E9%87%8D%E4%BB%A5%E5%8F%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8D%E5%BA%8F%E5%92%8C%E6%95%B0%E7%BB%84%EF%BC%88Array%EF%BC%89/">前端总结·基础篇·JS（二）数组深拷贝、去重以及字符串反序和数组（Array）</a></li>
-<li><a href="https://bergwhite.github.io/2017/03/17/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E4%B8%89%EF%BC%89arguments%E3%80%81callee%E3%80%81call%E3%80%81apply%E3%80%81bind%E5%8F%8A%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">前端总结·基础篇·JS（三）arguments、callee、call、apply、bind及函数封装和构造函数</a></li>
-<li><a href="https://bergwhite.github.io/2017/04/02/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%9F%BA%E7%A1%80%E7%AF%87%C2%B7JS%EF%BC%88%E5%9B%9B%EF%BC%89%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%E5%8F%8A%E8%B7%A8%E5%9F%9F%E6%96%B9%E6%A1%88/">前端总结·基础篇·JS（四）异步请求及跨域方案</a></li>
-<li><a href="https://bergwhite.github.io/2017/03/25/%E5%89%8D%E7%AB%AF%E6%80%BB%E7%BB%93%C2%B7%E5%B7%A5%E5%85%B7%E7%AF%87%C2%B7%E7%AE%A1%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97%E5%8C%96%E6%96%B9%E6%A1%88/">前端总结·工具篇·管理（一）常用模块化方案</a></li>
-</ul>
-<blockquote>
-<p>目录</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">一、显示（display）</div><div class="line">	1.1 盒模型（box-model）</div><div class="line">	1.2 行内元素（inline） &amp; 块元素（block）</div><div class="line">	1.3 行内块元素（inline-block IE8+ IE6-7/tools）</div><div class="line">	1.4 flex（IE11+ IE10/-ms-）</div><div class="line">	1.5 none</div><div class="line">二、位置（position）</div><div class="line">三、补充</div><div class="line">	3.1 浮动（float）</div><div class="line">	3.2 层叠（z-index）</div><div class="line">	3.3 溢出（overflow）</div><div class="line">	3.4 resize（notIE）（CSS3）</div><div class="line">	3.5 分栏（column）（IE10+ notOperaMini）（CSS3）</div></pre></td></tr></table></figure>
-<h2 id="一、显示（display）"><a href="#一、显示（display）" class="headerlink" title="一、显示（display）"></a>一、显示（display）</h2><h3 id="1-1-盒模型（box-model）"><a href="#1-1-盒模型（box-model）" class="headerlink" title="1.1 盒模型（box-model）"></a>1.1 盒模型（box-model）</h3><p><strong>看图了解盒模</strong></p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219232833800-668106397.png" alt=""></p>
-<p>盒模型包括内容（content）、填充（padding）、边框（border）、边距（margin）。我们给元素设置的高度，是内容（content）的高度。再给元素添加填充（padding），元素看起来会更高。</p>
-<p>以下是一个盒模型的演示实例，在谷歌浏览器中查看盒模型可以使用 右键&gt;属性&gt;Computed 的方式进行查看。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;p class="box-model"&gt;box-model&lt;/p&gt;</div><div class="line"></div><div class="line">.box-model &#123;</div><div class="line">    border: 1px solid red;</div><div class="line">    padding: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>以边框为界的盒模型</strong></p>
-<p>有些时候，我们不希望给元素添加填充（padding）时，元素的高度会改变，这样不利于我们进行布局。可以把元素的盒模型，设置成以边框（border）为界的盒模型（box-sizing:border-box;）。在IE的怪异模式下，默认使用了这种盒模型。</p>
-<p>下面是一个示例。</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219232855425-447936984.png" alt=""></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div class="box-model"&gt;box-model&lt;/div&gt;</div><div class="line"></div><div class="line">.box-model &#123;</div><div class="line">    box-sizing: border-box;  /* 设置成以边框为界的盒模型 */</div><div class="line">    border: 1px solid red;</div><div class="line">    height: 80px;</div><div class="line">    padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="1-2-行内元素（inline）-amp-块元素（block）"><a href="#1-2-行内元素（inline）-amp-块元素（block）" class="headerlink" title="1.2 行内元素（inline） &amp; 块元素（block）"></a>1.2 行内元素（inline） &amp; 块元素（block）</h3><p><strong>布局一般都用块元素</strong></p>
-<p>块元素可以设置宽高，默认占据一行。行内元素不能设置宽高，宽度由其内容决定。</p>
-<p>块元素默认没高度，有内容才会有高度。行内元素默认没高度和宽度，有内容才会有。行内元素虽然不能设置宽高，但是设置成绝对定位（absolute）后，可以设置宽高。（定位在第二节讲）</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233041316-1944575010.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">块元素：div p ul li table form html5(header section footer)。</div><div class="line">行内元素：a font(em strong i) img span。</div></pre></td></tr></table></figure>
-<p><strong>块元素可以变成行内元素</strong></p>
-<p>我们通常将li变成行内元素制作导航栏。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>留言<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line">.nav li &#123;</div><div class="line">    display: inline;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>一行只有一个块元素</strong></p>
-<p>但是，行内元素可以有多个。</p>
-<p><strong>空的块元素将在布局中消失</strong></p>
-<p>在调试页面的时候想要显示元素在布局中的位置，我们通常会给元素添加一个高度。</p>
-<p>行内元素内容为空也会在布局中消失（不推荐为空）。</p>
-<h3 id="1-3-行内块元素（inline-block-IE8-IE6-7-tools）"><a href="#1-3-行内块元素（inline-block-IE8-IE6-7-tools）" class="headerlink" title="1.3 行内块元素（inline-block IE8+ IE6-7/tools）"></a>1.3 行内块元素（inline-block IE8+ IE6-7/tools）</h3><p>兼容性是支持&gt;=IE8，IE6-7请参见<a href="http://www.cnblogs.com/leejersey/archive/2012/07/11/2586506.html" target="_blank" rel="external">专注WEB前端开发</a>。</p>
-<p><strong>清除两元素间隙</strong></p>
-<p>两元素间隙来源于元素间的空格，拼接元素即可消除。也可以用过使用模板来消除。更多讨论请见<a href="https://www.zhihu.com/question/21468450" target="_blank" rel="external">知乎</a>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    文章<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">    留言<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><strong>特殊情况下的元素对齐</strong></p>
-<p>三个li并列，都设置成inline-block。当对最左边的元素设置display:none;时，其他两个li会下沉到容器的底部。此时，需要对这两个li设置顶部对齐（vertical-align:top;）。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav"</span> <span class="attr">id</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"hidden"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>留言<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"></div><div class="line">.hidden &#123;display: none;&#125;</div><div class="line">.left &#123;height: 50px;&#125;</div><div class="line">.center,.right &#123;vertical-align: top;&#125;</div></pre></td></tr></table></figure>
-<h3 id="1-4-弹性盒子（flex-IE11-IE10-ms-）"><a href="#1-4-弹性盒子（flex-IE11-IE10-ms-）" class="headerlink" title="1.4 弹性盒子（flex IE11+ IE10/-ms-）"></a>1.4 弹性盒子（flex IE11+ IE10/-ms-）</h3><p>兼容性是支持&gt;=IE11，IE10需要添加浏览器私有前缀（-ms-）。</p>
-<p><strong>使用弹性布局</strong></p>
-<p>使用了弹性布局，float clear vertical将失效。更多请见<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">阮一峰</a>的博客。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">display:flex;  // 块元素用</div><div class="line">display:inline-flex;  // 行内元素用</div></pre></td></tr></table></figure>
-<p><strong>弹性布局设置</strong></p>
-<p>这些就暂时当作参考手册吧。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">flex-direction:row/row-reverse/column/column-reverse;  // 方向</div><div class="line">flex-wrap:nowrap/wrap/wrap-reverse;  // 换行</div><div class="line">flex-flow:direction/wrap;  // 方向和换行的简写，默认为flex-flow:row nowrap;</div><div class="line">justify-content:flex-start/center/flex-end/space-between/space-around;  // 主轴（默认为水平轴）</div><div class="line">align-items：flex-start/center/flex-end/baseline/stretch;  // 交叉轴</div><div class="line">align-contents:flex-start/center/flex-end/space-between/space-around/stretch;  // 多条轴线的对齐方式（单条无效）</div><div class="line">order:number;  // 顺序（默认为0）</div><div class="line">flex-grow:number;  // 宽度有余时放大比例（默认为0）</div><div class="line">flex-shrink:number;  // 宽度有余时缩小比例（默认为1）</div><div class="line">flex-basis:number/auto;  // 分配多余空间前，项目占据的主轴空间（默认auto）</div><div class="line">flex:grow/shrink/basis;  // grow shrink basis三个属性的缩写</div><div class="line">align-self:auto/flex-start/center/flex-end/baseline/stretch;;  // 单个项目的对齐方式，可覆盖align-items（默认auto）</div></pre></td></tr></table></figure>
-<p><strong>主轴（justify-content）只能居中单行元素</strong></p>
-<p>那多行怎么办呢？我们可以把多行嵌套在一个div中，构造出单行元素。</p>
-<p>下面是一个水平和垂直居中的一个实例。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>两行都会<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>居中<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">.parent &#123;</div><div class="line">    display: flex;  /* 使用flex布局 */</div><div class="line">    align-items: center;  /* 交叉轴居中 */</div><div class="line">    justify-content: center;  /* 主轴（默认为水平轴）居中 */</div><div class="line">    background: red;</div><div class="line">    height: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="1-5-none"><a href="#1-5-none" class="headerlink" title="1.5 none"></a>1.5 none</h3><p><strong>隐藏元素</strong></p>
-<p>以下两种方法都可以隐藏元素，但是display:none;会清除原本占用的布局空间。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">visibility:hidden;  // 隐藏元素</div><div class="line">display:none;  // 隐藏元素并清除原本占用的布局空间</div></pre></td></tr></table></figure>
-<h2 id="二、位置（position）"><a href="#二、位置（position）" class="headerlink" title="二、位置（position）"></a>二、位置（position）</h2><p>绝对（absolute）、相对（relative）和固定（fixed）定位，都可以使用top，right，left，bottom元素。但是表示的意义却各不相同。</p>
-<p><strong>清除布局空间的定位（absolute fixed）</strong></p>
-<p>固定定位（fixed）不会随着鼠标的滚动而改变位置。他真的是固定屏幕的某一个位置的，比较常见的是网页右下角的广告。</p>
-<p>绝对定位（absolute）的定位原点是非默认定位（static）的父节点。可以是absolute fixed relative，如果父节点没有这些，那定位原点就是body了。使用了这两种定位中的一种，元素原本占用的布局空间将会消失（脱离文档流）。</p>
-<p>下面是绝对定位（absolute）的一个例子。左图是默认布局，右图是使用绝对定位（absolute）之后的（元素原本的布局空间被清除）。</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233440644-930901721.png" alt=""><br><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233238035-1452405436.png" alt=""></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"border"</span>&gt;</span>I'm in front of you.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"border"</span>&gt;</span>I'm next to you.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">.border &#123;</div><div class="line">    border: 1px solid blue;</div><div class="line">&#125;</div><div class="line">.parent &#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 20px;</div><div class="line">    top: 20px;</div><div class="line">    background-color: red;</div><div class="line">    padding: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>保留布局空间的定位（relative）</strong></p>
-<p>元素原本占用的布局空间依旧保留在文档流中。</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233411004-1692682698.png" alt=""></p>
-<p>相对定位（relative）相对原有位置定位。把上例中的absolute改成relative即可看到效果。使用这种方法，元素原本占用的布局会保留。</p>
-<p><strong>默认定位</strong></p>
-<p>默认定位为static。</p>
-<p><strong>巧用relative+absolute定位</strong></p>
-<p>父级采用relative，子代采用absolute。则子代的定位原点变为父级元素的左上角。</p>
-<h2 id="三、补充"><a href="#三、补充" class="headerlink" title="三、补充"></a>三、补充</h2><h3 id="3-1-浮动（float）"><a href="#3-1-浮动（float）" class="headerlink" title="3.1 浮动（float）"></a>3.1 浮动（float）</h3><p>刚开始做页面的时候，还不知道浮动用了之后得清除，只气的想要砸键盘。现在好多了，知道了点技巧。更多技巧请见<a href="https://segmentfault.com/a/1190000003937063" target="_blank" rel="external">Tomson</a>。</p>
-<p><strong>清除浮动（.clear）</strong></p>
-<p>这种方法需要在浮动元素后面添加一个空的节点，然后写上clear属性。兼容IE6需要添加zoom:1;。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>留言<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"clear"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!--用来清楚浮动的空元素--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是另外一行<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">.nav li &#123;</div><div class="line">    background-color: red;</div><div class="line">    float: left;</div><div class="line">    list-style-type: none;</div><div class="line">&#125;</div><div class="line">.clear &#123;</div><div class="line">    clear: both;</div><div class="line">    zoom:1;  /* IE 6 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>清除浮动（overflow:hidden;）</strong></p>
-<p>使用这种方法意味着，浮动元素得有一个父元素，并给父元素添加overflow:hidden;属性。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>留言<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是另外一行<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">.nav li &#123;</div><div class="line">    background-color: red;</div><div class="line">    float: left;</div><div class="line">    list-style-type: none;</div><div class="line">&#125;</div><div class="line">.nav &#123;</div><div class="line">    overflow: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>文字环绕</strong></p>
-<p>浮动元素的另外一个妙用是实现文字环绕。</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233908941-733022222.png" alt=""></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"article"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"photo"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这段文字很长，是用来测试文字环绕的。图片的占位将用div块来模拟。这段文字很长，是用来测试文字环绕的。图片的占位将用div块来模拟。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">.article &#123;</div><div class="line">    width: 200px;</div><div class="line">&#125;</div><div class="line">.photo &#123;</div><div class="line">    width: 60px;</div><div class="line">    height: 60px;</div><div class="line">    background-color: red;</div><div class="line">    float: right;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="3-2-层叠（z-index）"><a href="#3-2-层叠（z-index）" class="headerlink" title="3.2 层叠（z-index）"></a>3.2 层叠（z-index）</h3><p>层叠可以控制元素的上下放置关系。值越大越上面。</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233930222-1361061790.png" alt=""></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"z zOne"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"z zTwo"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">.z &#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 200px;</div><div class="line">    left: 200px;</div><div class="line">    width: 60px;</div><div class="line">    height: 60px;</div><div class="line">    background-color: red;</div><div class="line">    opacity: .5;  /* 设置透明度为0.5 */</div><div class="line">&#125;</div><div class="line">.zTwo &#123;</div><div class="line">    top: 220px;  /* 和第一个块错开以看到效果 */</div><div class="line">    left: 220px;</div><div class="line">    background-color: blue;</div><div class="line">    opacity: .5;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="3-3-溢出（overflow）"><a href="#3-3-溢出（overflow）" class="headerlink" title="3.3 溢出（overflow）"></a>3.3 溢出（overflow）</h3><p>当页面内存在多个业内选项卡的时候，从一个没有右边滚动条的页面达到一个有滚动条的页面，将会产生页面跳动。解决办法是默认设置显示右边的滚动条。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">overflow-x</span><span class="selector-pseudo">:visibility</span>;</div></pre></td></tr></table></figure>
-<h3 id="3-4-resize（notIE）（CSS3）"><a href="#3-4-resize（notIE）（CSS3）" class="headerlink" title="3.4 resize（notIE）（CSS3）"></a>3.4 resize（notIE）（CSS3）</h3><p>定义用户是否可调整当前元素的边框大小。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">resize: horizontal（水平）/vertical（垂直）/both/none/inherit;</div></pre></td></tr></table></figure>
-<h3 id="3-5-分栏（column）（IE10-notOperaMini）（CSS3）"><a href="#3-5-分栏（column）（IE10-notOperaMini）（CSS3）" class="headerlink" title="3.5 分栏（column）（IE10+ notOperaMini）（CSS3）"></a>3.5 分栏（column）（IE10+ notOperaMini）（CSS3）</h3><p>兼容性是IE&gt;=10，不支持opera mini。更多请见<a href="http://www.runoob.com/css3/css3-multiple-columns.html" target="_blank" rel="external">菜鸟教程</a>。</p>
-<p><img src="http://images2015.cnblogs.com/blog/1036201/201702/1036201-20170219233953238-397506653.png" alt=""></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这一段文字用来测试分栏。这一段文字用来测试分栏。这一段文字用来测试分栏。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">p &#123;</div><div class="line">    width: 200px;  /* 把段落的宽度设短一点，便于效果的展现 */</div><div class="line">    column-count: 3;  /* 设定需要分几栏 */</div><div class="line">    column-gap: 20px;  /* 设定两栏间隔 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这一节主要参考了<a href="http://zh.learnlayout.com/" target="_blank" rel="external">学习CSS布局</a>，<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">阮一峰的博客</a>，<a href="https://segmentfault.com/a/1190000003937063" target="_blank" rel="external">Tomson</a>，<a href="http://www.cnblogs.com/leejersey/archive/2012/07/11/2586506.html" target="_blank" rel="external">专注WEB前端开发</a>，<a href="http://www.runoob.com/css3/css3-multiple-columns.html" target="_blank" rel="external">菜鸟教程</a>，<a href="https://www.zhihu.com/question/21468450" target="_blank" rel="external">知乎</a>和我在看的一本书《CSS设计指南》。</p>
-<p>第一次写前端方面的长文章。写了改，改了写，然后继续改，又继续写。如此循环往复，只为让用词用句更加恰当一些。文中有什么不恰当的地方，还望指出。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/19/前端总结·基础篇·CSS（一）布局/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1569,6 +1519,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ZeptoJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
@@ -1577,19 +1535,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ZeptoJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
